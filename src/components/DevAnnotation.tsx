@@ -11,7 +11,13 @@ export function DevAnnotation() {
   if (!import.meta.env.DEV) return null;
   return (
     <Suspense fallback={null}>
-      <AgentationToolbar className="agentation-dock" />
+      <AgentationToolbar
+        className="agentation-dock"
+        // Points the component at the `agentation-mcp server` (port 4747) so
+        // annotations sync and the agent can read them. Without this the
+        // toolbar only writes to localStorage for manual copy/paste.
+        endpoint={import.meta.env.VITE_AGENTATION_ENDPOINT ?? "http://localhost:4747"}
+      />
     </Suspense>
   );
 }

@@ -187,7 +187,7 @@ export function WhatsAppFab() {
       href={`https://wa.me/${CONTACT.waNumber}`}
       target="_blank"
       rel="noopener"
-      className="glass"
+      className="glass wa-fab"
       style={{
         position: "fixed",
         right: "max(18px, env(safe-area-inset-right, 0px))",
@@ -213,7 +213,20 @@ export function WhatsAppFab() {
         <path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8z" />
       </svg>
       <span className="wa-label">WhatsApp us</span>
-      <style>{`@media (max-width: 560px) { .wa-label { display: none; } }`}</style>
+      {/* Below 560px the pill collapses to a 44px icon button so the FAB
+          cannot sit over hero content. The accessible name carries the
+          whole label regardless. */}
+      <style>{`
+        @media (max-width: 560px) {
+          a[aria-label="WhatsApp us"].wa-fab {
+            padding: 0;
+            width: 44px;
+            height: 44px;
+            justify-content: center;
+          }
+          .wa-label { display: none; }
+        }
+      `}</style>
     </a>
   );
 }

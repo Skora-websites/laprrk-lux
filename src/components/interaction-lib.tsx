@@ -195,7 +195,10 @@ export function LinkImageSwap({
                 fontFamily: '"Bricolage Grotesque", sans-serif',
                 fontSize: "clamp(1.35rem, 2.6vw, 2rem)",
                 letterSpacing: "-0.02em",
-                opacity: isActive ? 1 : 0.55,
+                /* Active list item is fully emphasised; others dim to 0.75
+                   rather than a lower value because inactive rows must still
+                   clear WCAG 1.4.3 against the light band. */
+                opacity: isActive ? 1 : 0.75,
                 transition: "opacity .35s ease, color .35s ease",
               }}
             >

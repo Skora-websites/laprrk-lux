@@ -15,22 +15,35 @@ const FLOAT_CARDS = [
   },
 ];
 
+/* One glass composition for the right column: the three practices as
+   depth-stacked rows (the reference site's card-pile treatment) with the
+   punchline as the base plate. Replaces the previous orb + LAPRRK badge +
+   ribbon + three loose cards, which read as five competing motifs. */
 function Visual() {
   return (
-    <div className="tn-visual" data-h="visual" aria-hidden="true">
-      <div className="tn-glow" />
-      <div className="tn-orb" />
-      <div className="tn-ring tn-ring-a" />
-      <div className="tn-ring tn-ring-b" />
-      <div className="tn-visor">
-        <span>LAPRRK</span>
-      </div>
-      <div className="tn-ribbon">
-        <div className="tn-ribbon-track">
-          {[0, 1].map((k) => (
-            <span key={k}>Build&ensp;•&ensp;Hire&ensp;•&ensp;Train&ensp;•&ensp;Scale&ensp;•&ensp;Repeat&ensp;•&ensp;</span>
-          ))}
-        </div>
+    <div className="tn-visual" data-h="visual">
+      <div className="tn-glow" aria-hidden="true" />
+      <div className="tn-stack" data-h="stack">
+        {FLOAT_CARDS.map((c, i) => (
+          <a className="tn-stack-row" data-layer={i} href={c.href} key={c.href}>
+            <span className="icon-badge tn-stack-ic" aria-hidden="true">{c.icon}</span>
+            <span className="tn-stack-text">
+              <strong className="tn-stack-t">{c.title}</strong>
+              <small className="tn-stack-s">{c.sub}</small>
+            </span>
+            <span className="tn-stack-k mono" aria-hidden="true">
+              0{i + 1}
+              <span className="tn-stack-arrow" aria-hidden="true">→</span>
+            </span>
+          </a>
+        ))}
+        <a className="tn-stack-core" href={HERO.ctaSecondary.href}>
+          <span className="tn-stack-core-num" aria-hidden="true">3</span>
+          <span className="tn-stack-core-lab">
+            practices, one partner
+            <span className="tn-stack-core-cta" aria-hidden="true">→</span>
+          </span>
+        </a>
       </div>
     </div>
   );
@@ -53,8 +66,10 @@ export function Hero() {
       .fromTo("[data-h='cta']", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, "-=0.4")
       .fromTo("[data-h='stat']", { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, stagger: 0.08 }, "-=0.35")
       .fromTo("[data-h='latest']", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, "-=0.3")
-      .fromTo("[data-h='visual']", { scale: 0.92, opacity: 0 }, { scale: 1, opacity: 1, duration: 1.2, ease: "power4.out" }, 0.3)
-      .fromTo("[data-h='card']", { x: 48, opacity: 0 }, { x: 0, opacity: 1, duration: 0.7, stagger: 0.1 }, 0.55);
+      /* The stack settles from a single plane into three layered rows. */
+      .fromTo("[data-h='stack']", { scale: 0.94, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power4.out" }, 0.25)
+      .fromTo("[data-layer]", { y: 26, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, stagger: 0.12 }, 0.5)
+      .fromTo(".tn-stack-core", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, 0.9);
 
     /* Pinned gentle exit: the stage drifts and dims, then reverses on scroll-up. */
     ScrollTrigger.create({
@@ -105,18 +120,6 @@ export function Hero() {
           </a>
         </div>
         <Visual />
-        <div className="tn-cards">
-          {FLOAT_CARDS.map((c) => (
-            <a key={c.href} data-h="card" className="tn-card glass" href={c.href}>
-              <span className="icon-badge" aria-hidden="true">{c.icon}</span>
-              <span className="tn-card-text">
-                <strong>{c.title}</strong>
-                <small>{c.sub}</small>
-              </span>
-              <span className="tn-arrow" aria-hidden="true">→</span>
-            </a>
-          ))}
-        </div>
         <dl className="tn-stats">
           {STATS.map((s) => (
             <div className="tn-stat" data-h="stat" key={s.label}>
