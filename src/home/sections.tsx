@@ -1,6 +1,6 @@
 import { Reveal, TiltCard } from "../components/motion-primitives";
 import { BlurReveal, StackCards, PinnedHead, RevealWords } from "../components/motion-lib";
-import { Marquee, DimSiblings } from "../components/interaction-lib";
+import { Marquee, DimSiblings, HoverFollow, LinkImageSwap, useActiveIndex } from "../components/interaction-lib";
 import { GlassCard, SectionHead } from "../components/chrome";
 import {
   SERVICES_HEAD, DIVISIONS, TRAINING_DIVISION, TECH_HEAD, TECH_MARQUEE, TECH_CARDS,
@@ -230,6 +230,9 @@ export function Cases() {
 }
 
 export function Industries() {
+  // The reference site pairs a link list with an image panel that swaps to the
+  // hovered link. Same pairing here, index-aligned with the image column.
+  const { active, setActive } = useActiveIndex(INDUSTRIES[0].title);
   return (
     <section className="band-light section lux-pad" aria-label="Industries">
       <div className="container">
@@ -237,15 +240,30 @@ export function Industries() {
           title="Industries we serve"
           lede="Domain context matters. We bring patterns from each of these sectors to every new engagement."
         />
-        <div className="grid-5">
-          {INDUSTRIES.map((ind, i) => (
-            <Reveal key={ind.title} delay={(i % 5) * 0.04}>
-              <div className="ind-card">
-                <h3>{ind.title}</h3>
-                <p>{ind.body}</p>
-              </div>
-            </Reveal>
-          ))}
+        <div className="ind-swap">
+          <DimSiblings selector="[data-dim-row]" className="ind-swap-links">
+            <LinkImageSwap
+              labels={INDUSTRIES.map((ind) => ({
+                id: ind.title,
+                label: ind.title,
+                href: "case-studies.html",
+              }))}
+              active={active}
+              onChange={setActive}
+            />
+          </DimSiblings>
+          <div className="ind-swap-media glass" aria-hidden="true">
+            {INDUSTRIES.map((ind, i) => (
+              <img
+                key={ind.title}
+                src={`https://picsum.photos/seed/laprrk-industry-${i}/720/900`}
+                alt=""
+                loading="lazy"
+                className={ind.title === active ? "ind-swap-img is-active" : "ind-swap-img"}
+              />
+            ))}
+          </div>
+          <p className="ind-swap-body">{INDUSTRIES.find((i) => i.title === active)?.body}</p>
         </div>
       </div>
     </section>
@@ -257,30 +275,34 @@ export function Posts() {
     <section className="section lux-pad" aria-label="Blog posts">
       <div className="container">
         <SectionHead title={POSTS_HEAD.title} />
-        <div className="post-rows">
+        {/* Rows dim their siblings on hover and track a cursor-following layer;
+            both are ported from the reference site's list interactions. */}
+        <DimSiblings selector=".post-row" dimTo={0.35} className="post-rows">
           {POSTS.map((p, i) => (
-            <Reveal key={p.href}>
-              <article className="post-row glass">
-                <img
-                  src={`https://picsum.photos/seed/laprrk-${["nep-classroom", "ai-upskilling", "hire-train-deploy"][i]}/640/480`}
-                  alt=""
-                  loading="lazy"
-                  width={640}
-                  height={480}
-                />
-                <div className="post-row-body">
-                  <div className="case-top">
-                    <span className="pill">{p.pill}</span>
-                    <span className="case-sector mono">{p.meta}</span>
+            <HoverFollow key={p.href} className="post-row-hover">
+              <Reveal key={p.href}>
+                <article className="post-row glass" data-dim-row>
+                  <img
+                    src={`https://picsum.photos/seed/laprrk-${["nep-classroom", "ai-upskilling", "hire-train-deploy"][i]}/640/480`}
+                    alt=""
+                    loading="lazy"
+                    width={640}
+                    height={480}
+                  />
+                  <div className="post-row-body">
+                    <div className="case-top">
+                      <span className="pill">{p.pill}</span>
+                      <span className="case-sector mono">{p.meta}</span>
+                    </div>
+                    <h3><a href={p.href}>{p.title}</a></h3>
+                    <p>{p.body}</p>
+                    <a className="text-link" href={p.href}>Read article →</a>
                   </div>
-                  <h3><a href={p.href}>{p.title}</a></h3>
-                  <p>{p.body}</p>
-                  <a className="text-link" href={p.href}>Read article →</a>
-                </div>
-              </article>
-            </Reveal>
+                </article>
+              </Reveal>
+            </HoverFollow>
           ))}
-        </div>
+        </DimSiblings>
         <div className="center-row">
           <a className="btn btn-ghost" href="blog.html">All articles</a>
         </div>
