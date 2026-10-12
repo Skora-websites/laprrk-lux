@@ -8,7 +8,7 @@ import { useGsapContext, gsap } from "../lib/motion";
 
 export function Brand({ onInk = false }: { onInk?: boolean }) {
   return (
-    <a href="index.html" aria-label="Laprrk Technology Solutions home" style={{ display: "inline-flex", alignItems: "center", gap: 12, textDecoration: "none", color: "inherit" }}>
+    <a href="index.html" style={{ display: "inline-flex", alignItems: "center", gap: 12, textDecoration: "none", color: "inherit" }}>
       <svg viewBox="0 0 40 40" width={38} height={38} aria-hidden="true">
         <rect width="40" height="40" rx="12" fill={onInk ? "#292524" : "#1c1917"} stroke={onInk ? "rgba(52,211,153,0.4)" : "none"} strokeWidth={onInk ? 1 : 0} />
         <path d="M14 10.5v19h13.5" stroke="#0e7a5f" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" fill="none" />

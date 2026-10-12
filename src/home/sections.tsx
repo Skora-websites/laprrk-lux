@@ -306,7 +306,7 @@ export function CtaBand() {
               <p className="lede">{CTA.lede}</p>
               <div className="hero-ctas">
                 <a className="btn btn-gold btn-lg" href={CTA.primary.href}>{CTA.primary.label}</a>
-                <a className="btn btn-ghost-ink btn-lg" href="it-services.html">Explore services</a>
+                <a className="btn btn-ghost on-ink btn-lg" href="it-services.html">Explore services</a>
               </div>
               <div className="cta-contacts">
                 {CTA.contacts.map((c) => (

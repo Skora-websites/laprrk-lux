@@ -93,10 +93,16 @@ function htmlShell(slug, title, desc) {
     <meta name="description" content="${desc}" />
     <link rel="canonical" href="https://laprrk.com/${slug}.html" />
     <meta name="theme-color" content="#f4f3fa" />
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Laprrk Technology Solutions" />
     <meta property="og:title" content="${title}" />
     <meta property="og:description" content="${desc}" />
+    <meta property="og:url" content="https://laprrk.com/${slug}.html" />
+    <meta property="og:image" content="https://laprrk.com/assets/img/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="${title}" />
+    <meta name="twitter:description" content="${desc}" />
+    <meta name="twitter:image" content="https://laprrk.com/assets/img/og-image.png" />
     <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

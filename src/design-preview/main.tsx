@@ -68,7 +68,7 @@ export default function DesignPreview() {
               </p>
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
                 <a className="btn btn-gold" href="#cards">See components</a>
-                <a className="btn btn-ghost-ink" href="#tokens">Tokens</a>
+                <a className="btn btn-ghost" href="#tokens">Tokens</a>
               </div>
             </div>
           </Reveal>

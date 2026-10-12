@@ -284,16 +284,18 @@ h1, h2, h3, h4 {
   color: var(--text);
 }
 
-.btn-ghost-ink {
-  border-color: rgba(14, 122, 95, 0.45);
+/* Light-on-ink variant for buttons sitting on dark-glass surfaces. */
+.on-ink {
+  border-color: rgba(14, 122, 95, 0.55);
   color: #fafaf9;
-  background: rgba(255, 255, 255, 0.04);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: none;
 }
 
-.btn-ghost-ink:hover {
+.on-ink:hover {
   border-color: #34d399;
-  color: #6ee7b7;
-  background: rgba(14, 122, 95, 0.12);
+  color: #ffffff;
+  background: rgba(14, 122, 95, 0.18);
 }
 
 /* ================= Hairlines & chips ================= */
@@ -2366,6 +2368,7 @@ a:hover .tn-arrow {
   border-color: rgba(14, 122, 95, 0.55);
   background: rgba(14, 122, 95, 0.12);
 }
+
 
 /* Dev-only annotation toolbar host: docked bottom-left so it never
    covers the topbar or header. */

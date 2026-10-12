@@ -31,7 +31,7 @@ export function Page({ data }: { data: PageData }) {
             <p className="lede">{data.lede}</p>
             <div className="hero-ctas">
               <a className="btn btn-gold btn-lg" href="contact.html">Book a free consultation</a>
-              <a className="btn btn-ghost-ink btn-lg" href={data.secondaryHref ?? "contact.html"}>
+              <a className="btn btn-ghost btn-lg" href={data.secondaryHref ?? "contact.html"}>
                 {data.secondaryLabel ?? "Talk to a specialist"}
               </a>
             </div>

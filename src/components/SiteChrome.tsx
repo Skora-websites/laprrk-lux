@@ -34,7 +34,7 @@ export function SiteDrawer({ open, onClose }: { open: boolean; onClose: () => vo
           type="button"
           onClick={onClose}
           aria-label="Close menu"
-          className="btn btn-ghost-ink"
+          className="btn btn-ghost on-ink"
           style={{ padding: 12 }}
         >
           <svg viewBox="0 0 24 24" width={20} height={20} fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" aria-hidden="true">
@@ -125,9 +125,9 @@ export function SiteFooter() {
           </div>
           {FOOTER_COLS.map((col) => (
             <div key={col.title}>
-              <h4 className="mono" style={{ color: "#fafaf9", fontSize: 11.5, fontWeight: 500, letterSpacing: "0.14em", textTransform: "uppercase", marginBottom: 16 }}>
+              <h3 className="mono" style={{ color: "#fafaf9", fontSize: 11.5, fontWeight: 500, letterSpacing: "0.14em", textTransform: "uppercase", marginBottom: 16 }}>
                 <a href={col.href} style={{ textDecoration: "none", color: "inherit" }}>{col.title}</a>
-              </h4>
+              </h3>
               <ul style={{ listStyle: "none", margin: 0, padding: 0, display: "grid", gap: 9 }}>
                 {col.links.map((l, i) => (
                   <li key={`${l.href}-${i}`}>
@@ -202,12 +202,12 @@ export function WhatsAppFab() {
         fontSize: 15,
         padding: "13px 18px 13px 14px",
         borderRadius: 999,
-        background: "rgba(29,170,97,0.9)",
+        background: "rgba(11,101,79,0.94)",
         backdropFilter: "blur(12px)",
         WebkitBackdropFilter: "blur(12px)",
         boxShadow: "0 14px 30px -10px rgba(10,22,34,.5)",
       }}
-      aria-label="Chat with Laprrk on WhatsApp"
+      aria-label="WhatsApp us"
     >
       <svg viewBox="0 0 24 24" width={22} height={22} fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M21 11.5a8.4 8.4 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.4 8.4 0 0 1-3.8-.9L3 21l1.9-5.7a8.4 8.4 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.4 8.4 0 0 1 3.8-.9h.5a8.5 8.5 0 0 1 8 8z" />

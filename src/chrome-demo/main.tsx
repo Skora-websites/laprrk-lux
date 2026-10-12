@@ -37,7 +37,7 @@ export default function ChromeDemo() {
               </p>
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
                 <a className="btn btn-gold" href="contact.html">Book a free consultation</a>
-                <a className="btn btn-ghost-ink" href="it-services.html">Explore services</a>
+                <a className="btn btn-ghost" href="it-services.html">Explore services</a>
               </div>
             </div>
           </Reveal>
