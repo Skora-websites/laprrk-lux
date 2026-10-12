@@ -113,6 +113,13 @@ html {
   -webkit-text-size-adjust: 100%;
 }
 
+/* Spring smooth scroll: JS drives window.scrollY each frame, so CSS
+   scroll-behavior must not also animate (it would double-ease).
+   Applied only while the scroller is active. */
+html[data-scroll="js"] {
+  scroll-behavior: auto;
+}
+
 body {
   margin: 0;
   background: var(--base);
@@ -296,6 +303,72 @@ h1, h2, h3, h4 {
   border-color: #34d399;
   color: #ffffff;
   background: rgba(14, 122, 95, 0.18);
+}
+
+/* ================= Ambient keyframes (ported from flexoglobal.org) ========= */
+
+/* Slow vertical bob: 15px amplitude, alternate direction, never snaps. */
+.animation-float {
+  animation: float 2000ms linear 500ms infinite alternate both;
+}
+
+.animation-float-small {
+  animation: float-small 2000ms linear 500ms infinite alternate both;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(15px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-small {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+/* Continuous full rotation for decorative rings/badges. */
+.rotate-circle {
+  animation: rotateCircle 20s linear infinite;
+}
+
+@keyframes rotateCircle {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Breathing scale used on hero artwork. */
+.animation-zoom {
+  animation: zoom-in-zoom-out 2000ms linear 500ms infinite alternate both;
+}
+
+@keyframes zoom-in-zoom-out {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 /* ================= Hairlines & chips ================= */
@@ -1842,6 +1915,35 @@ a:hover .tn-arrow {
   margin-bottom: 14px;
 }
 
+/* ---------- StackCards pile (ported card-stack scroll) ---------- */
+
+/* The stack needs breathing room below the last card so the pinned pile
+   never overlaps the next section. */
+.roles-stack {
+  display: grid;
+  gap: 18px;
+  padding-bottom: 12vh;
+}
+
+/* Each card owns its own layer; GSAP pins and scales them, so the layout
+   must not also reserve space for the pinned copies. */
+.roles-stack [data-stack-card] {
+  position: relative;
+  z-index: 1;
+}
+
+.roles-stack [data-stack-card] .role-card {
+  background: var(--surface);
+}
+
+/* Only pin on wide screens; the component gates pinning, but the spacing
+   above would otherwise leave a tall gap on phones. */
+@media (max-width: 991px) {
+  .roles-stack {
+    padding-bottom: 0;
+  }
+}
+
 .role-card {
   position: relative;
   display: grid;
@@ -1908,6 +2010,48 @@ a:hover .tn-arrow {
 }
 
 /* ---------- Synergy (rounded indigo panel inside section) ---------- */
+
+/* ---------- PinnedHead + word scrub (ported fixed-title pattern) ---------- */
+
+/* The pinned head keeps the emerald panel treatment so scaling it up still
+   reads as the section's identity, not a floating island. */
+.syn-pin {
+  position: relative;
+}
+
+.syn-pin-head {
+  border-radius: clamp(22px, 3vw, 32px);
+  padding: clamp(32px, 5vw, 64px) clamp(22px, 4vw, 56px);
+  background:
+    radial-gradient(700px 380px at 88% 0%, rgba(14, 122, 95, 0.3), transparent 60%),
+    linear-gradient(180deg, #292524, #1c1917);
+  border: 1px solid rgba(14, 122, 95, 0.24);
+  box-shadow: 0 32px 80px -32px rgba(9, 10, 40, 0.7);
+  color: #fafaf9;
+  /* GSAP scales this element; the origin has to be the pinned top edge. */
+  transform-origin: 50% 0;
+  will-change: transform, opacity;
+}
+
+/* Scrubbed paragraph: SplitText sets opacity on each word, so the container
+   only needs to size and lead correctly. */
+.syn-lede-scrubbed {
+  max-width: 62ch;
+  margin: 40px auto 56px;
+  font-size: clamp(1.15rem, 2vw, 1.6rem);
+  line-height: 1.45;
+  text-align: center;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+/* Words stay individually animable without breaking line rhythm. GSAP
+   animates `color` rather than opacity so mid-scroll states keep full
+   contrast (WCAG 1.4.3). */
+.syn-lede-scrubbed .split-word {
+  display: inline-block;
+  will-change: color;
+}
 
 .syn-panel {
   border-radius: clamp(22px, 3vw, 32px);

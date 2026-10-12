@@ -1,8 +1,10 @@
 import { Reveal, TiltCard } from "../components/motion-primitives";
+import { BlurReveal, StackCards, PinnedHead, RevealWords } from "../components/motion-lib";
+import { Marquee, DimSiblings } from "../components/interaction-lib";
 import { GlassCard, SectionHead } from "../components/chrome";
 import {
-  SERVICES_HEAD, DIVISIONS, TRAINING_DIVISION, TECH_HEAD, TECH_CARDS,
-  SYNERGY_HEAD, SYNERGY, ROLES_HEAD, ROLES, WHY_HEAD, WHY_CARDS,
+  SERVICES_HEAD, DIVISIONS, TRAINING_DIVISION, TECH_HEAD, TECH_MARQUEE, TECH_CARDS,
+  SYNERGY_HEAD, SYNERGY_SCRUB, SYNERGY, ROLES_HEAD, ROLES, WHY_HEAD, WHY_CARDS,
   STEPS, CASES_HEAD, CASES, INDUSTRIES, POSTS_HEAD, POSTS, FAQS, CTA,
 } from "../lib/home-data";
 
@@ -13,7 +15,7 @@ export function Services() {
         <SectionHead title={SERVICES_HEAD.title} lede={SERVICES_HEAD.lede} eyebrow="What we do" />
         <div className="div-grid">
           {DIVISIONS.map((d, i) => (
-            <Reveal key={d.title}>
+            <BlurReveal key={d.title} direction={i % 2 === 0 ? "up" : "down"} offset={44} delay={i * 0.05} rotation={1.5}>
               <GlassCard className="div-card">
                 <div className="div-top">
                   <div className="div-title-row">
@@ -30,9 +32,9 @@ export function Services() {
                 </div>
                 <a className="text-link" href={d.more.href}>{d.more.label} →</a>
               </GlassCard>
-            </Reveal>
+            </BlurReveal>
           ))}
-          <Reveal>
+          <BlurReveal direction="down" offset={44}>
             <GlassCard className="div-card" tint>
               <div className="div-top">
                 <div className="div-title-row">
@@ -54,9 +56,9 @@ export function Services() {
                   </div>
                 ))}
               </div>
-              <a className="text-link" href={TRAINING_DIVISION.more.href}>{TRAINING_DIVISION.more.label} →</a>
-            </GlassCard>
-          </Reveal>
+                  <a className="text-link" href={TRAINING_DIVISION.more.href}>{TRAINING_DIVISION.more.label} →</a>
+              </GlassCard>
+          </BlurReveal>
         </div>
       </div>
     </section>
@@ -67,7 +69,15 @@ export function Tech() {
   return (
     <section className="section lux-pad" aria-label="Technology focus">
       <div className="container">
-        <SectionHead title={TECH_HEAD.title} lede={TECH_HEAD.lede} link={{ label: "Explore services", href: "it-services.html" }} />
+        <SectionHead title={TECH_HEAD.title} lede={TECH_HEAD.lede} />
+        {/* Infinite marquee: technologies sweep behind the bento grid (ported). */}
+        <Marquee className="tech-marquee">
+          {TECH_MARQUEE.map((t) => (
+            <span key={t} className="mono">
+              {t}
+            </span>
+          ))}
+        </Marquee>
         <div className="tech-bento">
           {TECH_CARDS.map((c, i) => (
             <Reveal key={c.title}>
@@ -91,19 +101,24 @@ export function Synergy() {
   return (
     <section className="section lux-pad" aria-label="Why one partner">
       <div className="container">
-        <div className="syn-panel">
-          <SectionHead title={SYNERGY_HEAD.title} lede={SYNERGY_HEAD.lede} eyebrow="The Laprrk model" dark />
-          <div className="grid-4">
-            {SYNERGY.map((s, i) => (
-              <Reveal key={s.title} delay={i * 0.06}>
-                <div className="syn-card">
-                  <span className="syn-num">0{i + 1}</span>
-                  <h3>{s.title}</h3>
-                  <p>{s.body}</p>
-                </div>
-              </Reveal>
-            ))}
+        <PinnedHead className="syn-pin">
+          <div data-pinned-head className="syn-pin-head">
+            <SectionHead title={SYNERGY_HEAD.title} lede={SYNERGY_HEAD.lede} eyebrow="The Laprrk model" dark />
           </div>
+        </PinnedHead>
+        <RevealWords className="syn-lede-scrubbed">
+          {SYNERGY_SCRUB}
+        </RevealWords>
+        <div className="grid-4">
+          {SYNERGY.map((s, i) => (
+            <Reveal key={s.title} delay={i * 0.06}>
+              <div className="syn-card">
+                <span className="syn-num">0{i + 1}</span>
+                <h3>{s.title}</h3>
+                <p>{s.body}</p>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
@@ -115,18 +130,20 @@ export function Roles() {
     <section className="section lux-pad" aria-label="Roles we recruit">
       <div className="container">
         <SectionHead title={ROLES_HEAD.title} lede={ROLES_HEAD.lede} />
-        <div className="grid-4">
-          {ROLES.map((r, i) => (
-            <Reveal key={r.title}>
-              <a className="role-card" href={r.href}>
-                <span className="icon-badge role-ic" aria-hidden="true">{["◈", "✦", "⬢", "✧", "⬣", "❖", "⬔", "⬓"][i % 8]}</span>
-                <h3>{r.title}</h3>
-                <p>{r.small}</p>
-                <span className="role-arrow" aria-hidden="true">→</span>
-              </a>
-            </Reveal>
-          ))}
-        </div>
+        <DimSiblings selector=".role-item" className="roles-stack" as="div">
+          <StackCards>
+            {ROLES.map((r, i) => (
+              <div className="role-item" data-stack-card key={r.title}>
+                <a className="role-card" href={r.href}>
+                  <span className="icon-badge role-ic" aria-hidden="true">{["◈", "✦", "⬢", "✧", "⬣", "❖", "⬔", "⬓"][i % 8]}</span>
+                  <h3>{r.title}</h3>
+                  <p>{r.small}</p>
+                  <span className="role-arrow" aria-hidden="true">→</span>
+                </a>
+              </div>
+            ))}
+          </StackCards>
+        </DimSiblings>
         <div className="center-row">
           <a className="btn btn-ghost" href="technologies-roles-we-recruit.html">See all 16 technology groups</a>
         </div>

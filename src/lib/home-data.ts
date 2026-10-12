@@ -142,6 +142,14 @@ export const TECH_HEAD = {
   lede: "We track what companies actually adopt, and we say plainly when a simpler stack costs less and ships faster.",
 };
 
+/* Sweeping marquee behind the bento grid (ported from the reference site). */
+export const TECH_MARQUEE = [
+  "React", "Next.js", "Node.js", ".NET", "Flutter", "Kotlin", "Swift",
+  "Python", "PyTorch", "LangChain", "Databricks", "Snowflake", "dbt",
+  "Kafka", "Kubernetes", "Terraform", "AWS", "Azure", "Google Cloud",
+  "Playwright", "PostgreSQL", "GraphQL", "Power BI", "Tableau",
+];
+
 export const TECH_CARDS = [
   { title: "Agentic AI & MCP", href: "agentic-ai-automation.html", body: "Agents that act across CRM, ERP and ticketing through Model Context Protocol, with human approval on every consequential step." },
   { title: "Testing AI systems", href: "qa-test-automation.html", body: "Eval suites, red-teaming and regression sets for LLM apps, run by a team that started in QA automation." },
@@ -155,6 +163,10 @@ export const SYNERGY_HEAD = {
   title: "Why one partner for all three works better",
   lede: "The engineers who build your systems screen your candidates and teach your teams, so quality stays consistent end to end.",
 };
+
+/* Scrubbed word-by-word as the section scrolls (opacity .12 -> 1). */
+export const SYNERGY_SCRUB =
+  "One team across delivery, hiring and training means one standard of quality, one source of truth for your roadmap, and one number to call when something needs to change.";
 
 export const SYNERGY = [
   { title: "Build", body: "Our engineers design, build, test and run your software, AI and cloud systems." },

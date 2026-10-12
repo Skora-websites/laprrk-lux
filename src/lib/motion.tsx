@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, type ReactNode, type RefObject } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { createSmoothScroller } from "./spring-scroll";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -17,11 +18,21 @@ const MotionCtx = createContext<{
  */
 export function MotionProvider({ children }: { children: ReactNode }) {
   useEffect(() => {
-    // Refresh triggers after fonts/images settle to avoid wrong pin measurements.
-    const t = setTimeout(() => ScrollTrigger.refresh(), 300);
+    // Refresh once after fonts/images settle so pins measure correctly.
+    // Deferred twice: the first tick catches late layout, and doing it after
+    // paint keeps it off the mount critical path (and off StrictMode's
+    // double-invoked effect, which would otherwise refresh during teardown).
+    const t = setTimeout(() => {
+      if (document.visibilityState === "visible") ScrollTrigger.refresh();
+    }, 300);
+
+    // Spring smooth scroll (desktop, motion-allowed only).
+    const scroller = createSmoothScroller();
+
     return () => {
       clearTimeout(t);
       ScrollTrigger.getAll().forEach((st) => st.kill());
+      scroller?.destroy();
     };
   }, []);
 
