@@ -1,23 +1,5 @@
 import type { ReactNode } from "react";
-import { useTheme } from "../lib/theme";
 import { Reveal, CountUp } from "./motion-primitives";
-
-/* ---------- ThemeToggle ---------- */
-
-export function ThemeToggle() {
-  const [theme, toggle] = useTheme();
-  return (
-    <button
-      type="button"
-      onClick={toggle}
-      className="glass btn"
-      style={{ padding: "10px 16px" }}
-      aria-label={`Switch to ${theme === "light" ? "dark" : "light"} theme`}
-    >
-      {theme === "light" ? "Dark" : "Light"} mode
-    </button>
-  );
-}
 
 /* ---------- Section header (no eyebrow by default) ---------- */
 
@@ -41,20 +23,23 @@ export function SectionHead({
           {eyebrow ? (
             <p
               className="lumina-eyebrow"
-              style={dark ? { background: "rgba(52,211,153,.13)", borderColor: "rgba(52,211,153,.4)", color: "#6ee7b7" } : undefined}
+              style={dark ? { background: "rgba(192,236,217,0.14)", borderColor: "rgba(192,236,217,0.35)", color: "#c0ecd9" } : undefined}
             >
               {eyebrow}
             </p>
           ) : null}
-          <h2 className="lumina-title" style={dark ? { color: "#ffffff" } : undefined}>
+          <h2
+            className="lumina-title"
+            style={dark ? { color: "#ffffff", textShadow: "0 2px 14px rgba(0,0,0,0.5)" } : undefined}
+          >
             {title}
           </h2>
           {lede ? (
-            <p className="lumina-lede" style={dark ? { color: "#d6d3d1" } : undefined}>{lede}</p>
+            <p className="lumina-lede" style={dark ? { color: "#c2d8d8" } : undefined}>{lede}</p>
           ) : null}
         </div>
         {link ? (
-          <a className="lumina-link" href={link.href} style={dark ? { color: "#6ee7b7" } : undefined}>
+          <a className="lumina-link" href={link.href} style={dark ? { color: "#c0ecd9" } : undefined}>
             {link.label} <span aria-hidden="true">→</span>
           </a>
         ) : null}

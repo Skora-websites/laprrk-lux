@@ -1,5 +1,5 @@
 import { MotionProvider } from "../lib/motion";
-import { ThemeToggle, SectionHead, GlassCard, Marquee, Stats } from "../components/chrome";
+import { SectionHead, GlassCard, Marquee, Stats } from "../components/chrome";
 import { Reveal, TiltCard, FloatLoop, CountUp } from "../components/motion-primitives";
 import { DevAnnotation } from "../components/DevAnnotation";
 import "../../src/styles/global.css";
@@ -28,19 +28,18 @@ export default function DesignPreview() {
           zIndex: 10,
         }}
       >
-        <span style={{ fontFamily: '"Bricolage Grotesque", sans-serif', fontWeight: 800, fontSize: 20 }}>
+        <span style={{ fontFamily: '"Instrument Serif", Georgia, serif', fontWeight: 400, fontSize: 22 }}>
           Laprrk<span style={{ color: "var(--accent)" }}>.</span>
         </span>
         <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
           <span className="mono" style={{ fontSize: 12, color: "var(--text-mute)" }}>
-            Design system preview
+            Sea-glass design system
           </span>
-          <ThemeToggle />
         </div>
       </header>
 
       <main>
-        {/* ===== Cinematic obsidian hero with floating glass console ===== */}
+        {/* ===== Cinematic midnight hero with floating glass console ===== */}
         <section
           className="ink-band"
           style={{
@@ -57,14 +56,14 @@ export default function DesignPreview() {
         >
           <Reveal y={28} stagger={0.1}>
             <div style={{ display: "grid", gap: 24 }}>
-              <span className="mono" style={{ fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "#0b654f" }}>
+              <span className="mono" style={{ fontSize: 12, letterSpacing: "0.14em", textTransform: "uppercase", color: "var(--accent)" }}>
                 Design system
               </span>
-              <h1 style={{ fontSize: "clamp(2.4rem,5vw,4.2rem)", letterSpacing: "-0.035em", lineHeight: 1.05 }}>
-                Indigo and violet glass
+              <h1 style={{ fontSize: "clamp(2.4rem,5vw,4.2rem)", fontWeight: 400, lineHeight: 1.04 }}>
+                Sea glass on midnight
               </h1>
-              <p style={{ color: "#b9b7d4", maxWidth: "48ch", fontSize: 18 }}>
-                Cinematic 3D glass, one violet accent, both themes shipped together.
+              <p style={{ color: "var(--text-mute)", maxWidth: "48ch", fontSize: 18 }}>
+                Cinematic glass, one sea-glass accent, six morphism families on a single dark theme.
               </p>
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
                 <a className="btn btn-gold" href="#cards">See components</a>
@@ -76,7 +75,7 @@ export default function DesignPreview() {
           <FloatLoop>
             <TiltCard className="glass-ink glass-sheen">
               <div style={{ position: "relative", padding: 24, display: "grid", gap: 14 }}>
-                <div className="mono" style={{ fontSize: 11.5, color: "#b9b7d4", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+                <div className="mono" style={{ fontSize: 11.5, color: "var(--text-mute)", textTransform: "uppercase", letterSpacing: "0.08em" }}>
                   Console preview
                 </div>
                 {["IT Services", "Hiring", "Training"].map((s) => (
@@ -87,13 +86,13 @@ export default function DesignPreview() {
                       justifyContent: "space-between",
                       alignItems: "center",
                       padding: "14px 16px",
-                      border: "1px solid rgba(14,122,95,.3)",
-                      borderRadius: 10,
-                      background: "rgba(255,255,255,0.03)",
+                      border: "1px solid rgba(192,236,217,.3)",
+                      borderRadius: 12,
+                      background: "rgba(240,244,233,0.04)",
                     }}
                   >
                     <b style={{ fontSize: 15 }}>{s}</b>
-                    <span className="mono" style={{ fontSize: 11, color: "#0b654f" }}>Live</span>
+                    <span className="mono" style={{ fontSize: 11, color: "var(--accent)" }}>Live</span>
                   </div>
                 ))}
               </div>
@@ -118,14 +117,14 @@ export default function DesignPreview() {
           />
         </section>
 
-        {/* ===== Glass card grid (light-theme surfaces) ===== */}
+        {/* ===== Glass card grid ===== */}
         <section id="cards" style={{ margin: "96px auto 0", maxWidth: 1280, width: "calc(100% - 32px)" }}>
           <SectionHead
             title="Glass surfaces"
             lede="Four tiers: glass, glass-strong, glass-tint and glass-ink. Tilt and glare on pointer-fine devices, reduced-motion collapses to static."
           />
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20 }}>
-            <GlassCard title=".glass" body="Default card surface. 20px blur, white inner highlight, hairline border." />
+            <GlassCard title=".glass" body="Default frosted card. 20px blur, mint inner highlight, hairline border." />
             <GlassCard title=".glass-tint" body="Accent-washed panel for featured cards and promos." tint />
             <GlassCard title="Tilt + glare" body="Pointer 3D tilt up to 6 degrees with a glare highlight tracking the cursor." />
             <GlassCard title="Count-up stats" body="Numerals count once on scroll entry, then hold tabular values." />
@@ -134,7 +133,7 @@ export default function DesignPreview() {
 
         {/* ===== Token swatches ===== */}
         <section id="tokens" style={{ margin: "96px auto 0", maxWidth: 1280, width: "calc(100% - 32px)" }}>
-          <SectionHead title="Tokens" lede="One accent family, cool neutrals, no pure black or white. Toggle the theme to verify both." />
+          <SectionHead title="Tokens" lede="One sea-glass accent family on a midnight base. No pure black, no pure white." />
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))", gap: 12 }}>
             {[
               ["--base", "Base"], ["--surface", "Surface"], ["--surface-2", "Surface 2"],
@@ -167,28 +166,28 @@ export default function DesignPreview() {
         >
           <Reveal>
             <div style={{ display: "grid", gap: 16 }}>
-              <h2 style={{ fontSize: "clamp(26px,2.8vw,36px)" }}>Ready to review both themes?</h2>
-              <p style={{ color: "#b9b7d4", maxWidth: "52ch" }}>
-                Toggle light and dark, resize to mobile, and check reduced-motion in your browser settings. Every component collapses gracefully.
+              <h2 style={{ fontSize: "clamp(26px,2.8vw,36px)", fontWeight: 400 }}>The whole site, one stage.</h2>
+              <p style={{ color: "var(--text-mute)", maxWidth: "52ch" }}>
+                Every page shares the midnight sea-glass theme, GSAP motion and the full morphism set — glass, clay, neu, skeu, liquid and jelly.
               </p>
               <div><a className="btn btn-gold" href="#tokens">Back to tokens</a></div>
             </div>
           </Reveal>
           <div className="glass-ink" style={{ padding: 24, display: "grid", gap: 10 }}>
-            <span className="mono" style={{ fontSize: 11.5, color: "#b9b7d4", textTransform: "uppercase", letterSpacing: "0.08em" }}>
+            <span className="mono" style={{ fontSize: 11.5, color: "var(--text-mute)", textTransform: "uppercase", letterSpacing: "0.08em" }}>
               Count-up demo
             </span>
-            <div className="mono" style={{ fontSize: 44, fontWeight: 500, color: "#0b654f" }}>
+            <div className="mono" style={{ fontSize: 44, fontWeight: 500, color: "var(--accent)" }}>
               <CountUp value={500} suffix="+" />
             </div>
-            <span style={{ fontSize: 14, color: "#b9b7d4" }}>Professionals trained, counted once on view</span>
+            <span style={{ fontSize: 14, color: "var(--text-mute)" }}>Professionals trained, counted once on view</span>
           </div>
         </section>
       </main>
 
       <footer style={{ maxWidth: 1280, margin: "0 auto 32px", width: "calc(100% - 32px)", padding: "24px 0", borderTop: "1px solid var(--line)" }}>
         <span className="mono" style={{ fontSize: 12.5, color: "var(--text-mute)" }}>
-          Laprrk design system, Phase 0 reference page
+          Laprrk sea-glass design system
         </span>
       </footer>
 

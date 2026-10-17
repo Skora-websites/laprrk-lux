@@ -1,346 +1,795 @@
 import { useEffect, useRef, useState } from "react";
-import { CONTACT, MEGA, RESOURCES_CARDS } from "../lib/nav-data";
-import { useOfficeClocks } from "../lib/clocks";
-import { useTheme } from "../lib/theme";
-import { useGsapContext, gsap } from "../lib/motion";
+import { MEGA, RESOURCES_CARDS } from "../lib/nav-data";
+import { ThemeToggle } from "./ThemeToggle";
 
-/* ---------- Brand mark (same geometry as the original logo) ---------- */
+/* ---------- Brand logo (exact template text from screenshot) ---------- */
 
-export function Brand({ onInk = false }: { onInk?: boolean }) {
+export function Brand({ color }: { color?: string; onInk?: boolean }) {
   return (
-    <a href="index.html" style={{ display: "inline-flex", alignItems: "center", gap: 12, textDecoration: "none", color: "inherit" }}>
-      <svg viewBox="0 0 40 40" width={38} height={38} aria-hidden="true">
-        <rect width="40" height="40" rx="12" fill={onInk ? "#292524" : "#1c1917"} stroke={onInk ? "rgba(52,211,153,0.4)" : "none"} strokeWidth={onInk ? 1 : 0} />
-        <path d="M14 10.5v19h13.5" stroke="#0e7a5f" strokeWidth="4.6" strokeLinecap="round" strokeLinejoin="round" fill="none" />
-        <circle cx="27.2" cy="13.4" r="3.3" fill="#0e7a5f" />
-      </svg>
-      <span style={{ fontFamily: '"Bricolage Grotesque", sans-serif', fontWeight: 800, fontSize: 20, letterSpacing: "-0.03em", lineHeight: 1 }}>
-        Laprrk
-        <small className="mono" style={{ display: "block", fontWeight: 400, fontSize: 9.5, letterSpacing: "0.16em", textTransform: "uppercase", color: onInk ? "#d6d3d1" : "var(--text-mute)", marginTop: 4 }}>
-          Technology Solutions LLP
-        </small>
-      </span>
+    <a
+      href="/"
+      className="logo"
+      style={{
+        fontFamily: 'Manrope, Arial, sans-serif',
+        fontSize: "1.0625rem",
+        fontWeight: 700,
+        color: color || "#f0f4e9",
+        letterSpacing: "0.16em",
+        textTransform: "uppercase",
+        textDecoration: "none",
+        display: "inline-flex",
+        alignItems: "center",
+        gap: 10,
+        lineHeight: 1,
+        transition: "color 0.25s ease",
+      }}
+    >
+      LAPRRK
     </a>
   );
 }
 
-/* ---------- Icons (Tabler geometry, consistent 1.75 stroke) ---------- */
+/* ---------- Minimal Chevron ---------- */
 
 function Chevron({ open }: { open: boolean }) {
   return (
-    <svg className="ic" viewBox="0 0 24 24" width={16} height={16} fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true"
-      style={{ transform: open ? "rotate(180deg)" : "none", transition: "transform .2s" }}>
+    <svg
+      viewBox="0 0 24 24"
+      width={12}
+      height={12}
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      style={{
+        transform: open ? "rotate(180deg)" : "none",
+        transition: "transform .22s cubic-bezier(0.22, 1, 0.36, 1)",
+        opacity: 0.75,
+      }}
+    >
       <path d="m6 9 6 6 6-6" />
     </svg>
   );
 }
 
-/* ---------- Live dots (semantic state only) ---------- */
-
-function Dot({ live }: { live: boolean }) {
-  return (
-    <i
-      aria-hidden="true"
-      style={{
-        width: 7,
-        height: 7,
-        borderRadius: "50%",
-        flex: "none",
-        display: "inline-block",
-        background: live ? "var(--accent)" : "var(--text-mute)",
-        boxShadow: live ? "0 0 0 3px var(--accent-soft), 0 0 10px var(--accent-soft)" : "none",
-      }}
-    />
-  );
-}
-
-/* ---------- Topbar ---------- */
-
-function Topbar() {
-  const c = useOfficeClocks();
-  return (
-    <div style={{ background: "#1c1917", color: "#d6d3d1", borderBottom: "1px solid rgba(214,211,209,.16)", fontSize: 13, position: "relative", zIndex: 60 }}>
-      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "8px clamp(16px,4vw,36px)", display: "flex", justifyContent: "space-between", alignItems: "center", gap: 16, flexWrap: "wrap" }}>
-        <div className="mono" style={{ display: "flex", gap: 18, alignItems: "center", fontSize: 12, flexWrap: "wrap" }}>
-          <span style={{ display: "inline-flex", alignItems: "center", gap: 8, whiteSpace: "nowrap" }}>
-            <Dot live={c.istOpen} /> Greater Noida <b style={{ color: "#fafaf9", fontWeight: 500 }}>{c.ist}</b> IST
-          </span>
-          <span style={{ display: "inline-flex", alignItems: "center", gap: 8, whiteSpace: "nowrap" }}>
-            <Dot live={c.usOpen} /> Louisville <b style={{ color: "#fafaf9", fontWeight: 500 }}>{c.us}</b> ET
-          </span>
-        </div>
-        <div style={{ display: "flex", gap: 20, flexWrap: "wrap" }} className="topbar-links">
-          <a href={`mailto:${CONTACT.email}`} style={{ color: "inherit", textDecoration: "none" }}>{CONTACT.email}</a>
-          <a href={CONTACT.phoneInHref} style={{ color: "inherit", textDecoration: "none" }}>{CONTACT.phoneIn}</a>
-          <a href={CONTACT.phoneUsHref} style={{ color: "inherit", textDecoration: "none" }}>{CONTACT.phoneUs}</a>
-        </div>
-      </div>
-      <style>{`@media (max-width: 720px) { .topbar-links { display: none !important; } }`}</style>
-    </div>
-  );
-}
-
-/* ---------- Glass mega menu ---------- */
-
-function MegaMenu({ item, open, onToggle }: { item: (typeof MEGA)[number]; open: boolean; onToggle: () => void }) {
-  return (
-    <div
-      style={{ position: "static" }}
-      onMouseEnter={(e) => {
-        if (window.matchMedia("(hover:hover)").matches && !open) onToggle();
-      }}
-      onMouseLeave={(e) => {
-        if (window.matchMedia("(hover:hover)").matches && open) onToggle();
-      }}
-    >
-      <button
-        type="button"
-        aria-expanded={open}
-        onClick={onToggle}
-        style={{
-          font: "500 15px/1 'Instrument Sans', sans-serif",
-          color: open ? "var(--accent)" : "var(--text)",
-          background: open ? "var(--accent-soft)" : "none",
-          border: 0,
-          cursor: "pointer",
-          display: "inline-flex",
-          alignItems: "center",
-          gap: 6,
-          padding: "11px 12px",
-          borderRadius: 999,
-        }}
-      >
-        {item.label} <Chevron open={open} />
-      </button>
-      <div
-        className="glass-strong glass-sheen"
-        style={{
-          position: "absolute",
-          left: 0,
-          right: 0,
-          top: "100%",
-          display: open ? "block" : "none",
-          borderRadius: 0,
-          borderTop: 0,
-          zIndex: 40,
-        }}
-      >
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "32px clamp(16px,4vw,36px) 36px", display: "grid", gridTemplateColumns: `repeat(${item.cols.length + 1}, 1fr)`, gap: 28 }}>
-          {item.cols.map((col) => (
-            <div key={col.title}>
-              <h4 style={{ fontSize: 17, marginBottom: 6 }}>
-                {col.href ? <a href={col.href} style={{ textDecoration: "none", color: "inherit" }}>{col.title}</a> : col.title}
-              </h4>
-              <ul style={{ listStyle: "none", margin: 0, padding: 0, borderTop: "1px solid var(--line)", paddingTop: 10, display: "grid", gap: 2 }}>
-                {col.links.map((l) => (
-                  <li key={l.href}>
-                    <a href={l.href} style={{ display: "block", textDecoration: "none", fontSize: 14.5, padding: "6px 0", color: "var(--text)" }}>{l.label}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-          <div className="glass-tint" style={{ padding: 22, display: "grid", gap: 10, alignContent: "start", borderRadius: 14 }}>
-            <span className="mono" style={{ fontSize: 11, letterSpacing: "0.12em", textTransform: "uppercase", color: "var(--accent)" }}>Featured</span>
-            <b style={{ fontFamily: '"Bricolage Grotesque", sans-serif', fontSize: 19, lineHeight: 1.25 }}>
-              {item.id === "mega-hiring" ? "Setting up a GCC or India team?" : "Generative AI & agentic AI training"}
-            </b>
-            <span style={{ color: "var(--text-mute)", fontSize: 14, lineHeight: 1.5 }}>
-              {item.id === "mega-hiring"
-                ? "Leadership first, then a foundation team of 20-50, then scale. See the phase-by-phase plan."
-                : "Separate tracks for leaders, business teams and developers, with a working RAG app and agent as the capstone."}
-            </span>
-            <a href={item.id === "mega-hiring" ? "gcc-hiring.html" : "generative-ai-training.html"} style={{ color: "var(--accent)", fontWeight: 600, fontSize: 15, textDecoration: "none" }}>
-              {item.id === "mega-hiring" ? "GCC hiring" : "View programme"}
-            </a>
-          </div>
-        </div>
-        <div style={{ borderTop: "1px solid var(--line)", background: "var(--surface-2)" }}>
-          <div style={{ maxWidth: 1280, margin: "0 auto", padding: "14px clamp(16px,4vw,36px)", display: "flex", justifyContent: "space-between", gap: 16, flexWrap: "wrap", fontSize: 14, color: "var(--text-mute)" }}>
-            <span>{item.foot}</span>
-            <a href={item.footHref} style={{ color: "var(--accent)", fontWeight: 600, textDecoration: "none" }}>{item.footLabel}</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* ---------- Resources mega row ---------- */
-
-function ResourcesMenu({ open, onToggle }: { open: boolean; onToggle: () => void }) {
-  return (
-    <div style={{ position: "static" }}>
-      <button
-        type="button"
-        aria-expanded={open}
-        onClick={onToggle}
-        style={{
-          font: "500 15px/1 'Instrument Sans', sans-serif",
-          color: open ? "var(--accent)" : "var(--text)",
-          background: open ? "var(--accent-soft)" : "none",
-          border: 0,
-          cursor: "pointer",
-          display: "inline-flex",
-          alignItems: "center",
-          gap: 6,
-          padding: "11px 12px",
-          borderRadius: 999,
-        }}
-      >
-        Resources <Chevron open={open} />
-      </button>
-      <div
-        className="glass-strong"
-        style={{ position: "absolute", left: 0, right: 0, top: "100%", display: open ? "block" : "none", borderRadius: 0, borderTop: 0, zIndex: 40 }}
-      >
-        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "32px clamp(16px,4vw,36px) 36px", display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 28 }}>
-          {RESOURCES_CARDS.map((c) => (
-            <a key={c.href} href={c.href} className="glass" style={{ padding: 20, display: "grid", gap: 8, textDecoration: "none", color: "inherit", alignContent: "start" }}>
-              <b style={{ fontFamily: '"Bricolage Grotesque", sans-serif', fontSize: 18 }}>{c.label}</b>
-              <span style={{ color: "var(--text-mute)", fontSize: 14 }}>
-                {c.href === "blog.html" ? "Practical guides on AI, QA, hiring and upskilling." : c.href === "case-studies.html" ? "Representative engagements across IT, hiring and training." : "Answers on pricing, process, IP, hiring terms and training."}
-              </span>
-            </a>
-          ))}
-        </div>
-        <div style={{ borderTop: "1px solid var(--line)", background: "var(--surface-2)" }}>
-          <div style={{ maxWidth: 1280, margin: "0 auto", padding: "14px clamp(16px,4vw,36px)", display: "flex", justifyContent: "space-between", gap: 16, flexWrap: "wrap", fontSize: 14, color: "var(--text-mute)" }}>
-            <span>Guides, case studies and answers from our engineers, recruiters and trainers.</span>
-            <a href="resources.html" style={{ color: "var(--accent)", fontWeight: 600, textDecoration: "none" }}>All resources</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-/* ---------- Theme switch (nav toggle, right of the CTA) ---------- */
-
-function ThemeSwitch() {
-  const [theme, toggleTheme] = useTheme();
-  const dark = theme === "dark";
-  return (
-    <button
-      type="button"
-      role="switch"
-      aria-checked={dark}
-      aria-label="Toggle color theme"
-      title={dark ? "Switch to light theme" : "Switch to dark theme"}
-      onClick={toggleTheme}
-      className="theme-switch"
-    >
-      <span className="theme-knob" aria-hidden="true" />
-    </button>
-  );
-}
-
-/* ---------- Header with scroll-aware glass ---------- */
+/* ---------- Background-Blended Navbar (Matches Template Screenshot, No Topbar) ---------- */
 
 export function SiteHeader({ onOpenDrawer }: { onOpenDrawer: () => void }) {
   const [openId, setOpenId] = useState<string | null>(null);
+  const [isDark, setIsDark] = useState(false);
+  const [isHome, setIsHome] = useState(() => {
+    if (typeof window === "undefined") return true;
+    const p = window.location.pathname;
+    return p === "" || p === "/" || p.endsWith("index.html");
+  });
+  const [isScrolled, setIsScrolled] = useState(false);
   const headRef = useRef<HTMLElement>(null);
+  const closeTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  /* Glass intensifies + pill tightens subtly after 40px scroll (ScrollTrigger, no listeners) */
-  useGsapContext(() => {
-    const el = headRef.current;
-    if (!el) return;
-    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
-    const pill = el.querySelector("[data-pill]");
-    if (!pill) return;
-    gsap.to(pill, {
-      paddingTop: 6,
-      paddingBottom: 6,
-      ease: "none",
-      scrollTrigger: { start: 40, end: 120, scrub: true },
-    });
+  useEffect(() => {
+    const isHomePage =
+      typeof window !== "undefined" &&
+      (window.location.pathname === "/" || window.location.pathname === "" || window.location.pathname.endsWith("index.html"));
+    setIsHome(isHomePage);
+
+    const checkTheme = () => {
+      const current = document.documentElement.getAttribute("data-theme");
+      setIsDark(current === "dark");
+    };
+
+    checkTheme();
+    window.addEventListener("themechange", checkTheme);
+    const observer = new MutationObserver(checkTheme);
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      const heroThreshold = isHomePage ? (window.innerHeight - 84) : 24;
+      setIsScrolled(scrollY > heroThreshold);
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      window.removeEventListener("themechange", checkTheme);
+      window.removeEventListener("scroll", handleScroll);
+      observer.disconnect();
+    };
   }, []);
 
-  /* Close menus on Escape and outside click (same behavior as original) */
+  const clearCloseTimer = () => {
+    if (closeTimerRef.current) {
+      clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+  };
+
+  const scheduleClose = () => {
+    clearCloseTimer();
+    closeTimerRef.current = setTimeout(() => {
+      setOpenId(null);
+    }, 240); // 240ms hover intent grace period
+  };
+
+  const handleTriggerEnter = (id: string) => {
+    clearCloseTimer();
+    setOpenId(id);
+  };
+
+  const handleMenuEnter = () => {
+    clearCloseTimer();
+  };
+
+  /* Close on Escape and click outside */
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") setOpenId(null);
     };
     const onClick = (e: MouseEvent) => {
-      if (!(e.target as HTMLElement).closest("[style*='position: static']")) setOpenId(null);
+      if (!(e.target as HTMLElement).closest(".site-header")) {
+        setOpenId(null);
+      }
     };
     document.addEventListener("keydown", onKey);
     document.addEventListener("click", onClick);
     return () => {
       document.removeEventListener("keydown", onKey);
       document.removeEventListener("click", onClick);
+      clearCloseTimer();
     };
   }, []);
 
+  const activeMega = MEGA.find((m) => m.id === openId);
+  const isResourcesOpen = openId === "resources";
+
+  // Transparent ONLY on hero section when not scrolled and no dropdown open
+  const isDropdownOpen = Boolean(openId);
+  const isTransparentOnHero = isHome && !isScrolled && !isDropdownOpen;
+  const onLightSurface = !isTransparentOnHero && !isDark;
+  const onLightSubpage = onLightSurface;
+  const navColor = onLightSurface ? "#021924" : "#f0f4e9";
+  const hoverColor = onLightSurface ? "#0e7a5f" : "#c0ecd9";
+
+  const linkStyle = {
+    fontFamily: "Manrope, Arial, sans-serif",
+    fontSize: "0.6875rem",
+    fontWeight: 600,
+    textTransform: "uppercase" as const,
+    letterSpacing: "0.13em",
+    textDecoration: "none",
+    color: navColor,
+    opacity: onLightSurface ? 0.95 : 0.9,
+    background: "transparent",
+    border: 0,
+    cursor: "pointer",
+    display: "inline-flex",
+    alignItems: "center",
+    gap: 6,
+    padding: "8px 0",
+    transition: "color 0.25s, opacity 0.25s",
+  };
+
   return (
-    <>
-      <Topbar />
-      <header
-        ref={headRef}
+    <header
+      ref={headRef}
+      className={`site-header ${onLightSurface ? "nav-light-theme" : "nav-dark-theme"}`}
+      style={{
+        position: "fixed",
+        top: 0,
+        left: 0,
+        right: 0,
+        width: "100%",
+        zIndex: 100,
+        padding: "0 clamp(24px, 4vw, 48px)",
+        background: isDropdownOpen
+          ? "#ffffff"
+          : isTransparentOnHero
+          ? "transparent"
+          : "rgba(255, 255, 255, 0.94)",
+        borderBottom: isTransparentOnHero
+          ? "none"
+          : "1px solid rgba(14, 122, 95, 0.12)",
+        boxShadow: isTransparentOnHero
+          ? "none"
+          : "0 4px 24px rgba(2, 25, 36, 0.06)",
+        backdropFilter: isTransparentOnHero || isDropdownOpen ? "none" : "blur(20px) saturate(160%)",
+        WebkitBackdropFilter: isTransparentOnHero || isDropdownOpen ? "none" : "blur(20px) saturate(160%)",
+        transition: "background 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease",
+      }}
+    >
+      <nav
+        className="nav"
+        aria-label="Primary"
         style={{
-          position: "sticky",
-          top: 8,
-          zIndex: 50,
-          margin: 0,
-          padding: "8px clamp(12px,3vw,32px) 0",
-          background: "transparent",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          maxWidth: 1400,
+          height: 84,
+          margin: "0 auto",
+          position: "relative",
         }}
       >
+        {/* Brand Name on Left */}
+        <Brand color={navColor} />
+
+        {/* Center Navigation Links (Uppercase letter-spaced) */}
         <div
-          data-pill
-          className="glass-strong"
+          className="nav-links"
           style={{
-            maxWidth: 1200,
-            width: "100%",
-            margin: "0 auto",
-            padding: "10px 10px 10px clamp(16px,2vw,24px)",
             display: "flex",
             alignItems: "center",
-            justifyContent: "space-between",
-            gap: 16,
-            borderRadius: 999,
-            background: "color-mix(in srgb, var(--surface) 86%, transparent)",
-            backdropFilter: "blur(24px) saturate(170%)",
-            WebkitBackdropFilter: "blur(24px) saturate(170%)",
-            boxShadow: "0 16px 40px -18px rgba(76,62,170,.3), inset 0 1px 0 var(--glass-border)",
-            border: "1px solid var(--line)",
+            gap: 36,
           }}
         >
-          <Brand />
-          <nav aria-label="Main" style={{ display: "flex", alignItems: "center", gap: 2 }} className="site-nav">
-            {MEGA.map((item) => (
-              <MegaMenu key={item.id} item={item} open={openId === item.id} onToggle={() => setOpenId(openId === item.id ? null : item.id)} />
-            ))}
-            <ResourcesMenu open={openId === "resources"} onToggle={() => setOpenId(openId === "resources" ? null : "resources")} />
-            <a href="about.html" style={{ font: "500 15px/1 'Instrument Sans', sans-serif", color: "var(--text)", textDecoration: "none", padding: "11px 12px" }}>About</a>
-            <a href="contact.html" style={{ font: "500 15px/1 'Instrument Sans', sans-serif", color: "var(--text)", textDecoration: "none", padding: "11px 12px" }}>Contact</a>
-            <a className="btn btn-gold" href="contact.html" style={{ marginLeft: 8, padding: "13px 20px" }}>
-              Book a free consultation
-            </a>
-            <ThemeSwitch />
-          </nav>
+          {MEGA.map((item) => {
+            const isOpen = openId === item.id;
+            return (
+              <div
+                key={item.id}
+                style={{ position: "relative", height: 84, display: "flex", alignItems: "center" }}
+                onMouseEnter={() => handleTriggerEnter(item.id)}
+                onMouseLeave={scheduleClose}
+              >
+                <button
+                  type="button"
+                  aria-expanded={isOpen}
+                  onClick={() => setOpenId(isOpen ? null : item.id)}
+                  style={{
+                    ...linkStyle,
+                    color: isOpen ? hoverColor : navColor,
+                    opacity: isOpen ? 1 : (onLightSubpage ? 0.95 : 0.82),
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.color = hoverColor;
+                    e.currentTarget.style.opacity = "1";
+                  }}
+                  onMouseLeave={(e) => {
+                    if (!isOpen) {
+                      e.currentTarget.style.color = navColor;
+                      e.currentTarget.style.opacity = onLightSubpage ? "0.95" : "0.82";
+                    }
+                  }}
+                >
+                  {item.label} <Chevron open={isOpen} />
+                </button>
+
+                {/* Safe Triangle Invisible Area bridging gap downward */}
+                {isOpen && (
+                  <div
+                    className="hover-safe-bridge"
+                    onMouseEnter={handleMenuEnter}
+                    style={{
+                      position: "absolute",
+                      bottom: 0,
+                      left: -30,
+                      right: -30,
+                      height: 30,
+                      background: "transparent",
+                      zIndex: 101,
+                      pointerEvents: "auto",
+                    }}
+                  />
+                )}
+              </div>
+            );
+          })}
+
+          {/* Resources Dropdown */}
+          <div
+            style={{ position: "relative", height: 84, display: "flex", alignItems: "center" }}
+            onMouseEnter={() => handleTriggerEnter("resources")}
+            onMouseLeave={scheduleClose}
+          >
+            <button
+              type="button"
+              aria-expanded={isResourcesOpen}
+              onClick={() => setOpenId(isResourcesOpen ? null : "resources")}
+              style={{
+                ...linkStyle,
+                color: isResourcesOpen ? hoverColor : navColor,
+                opacity: isResourcesOpen ? 1 : (onLightSubpage ? 0.95 : 0.82),
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.color = hoverColor;
+                e.currentTarget.style.opacity = "1";
+              }}
+              onMouseLeave={(e) => {
+                if (!isResourcesOpen) {
+                  e.currentTarget.style.color = navColor;
+                  e.currentTarget.style.opacity = onLightSubpage ? "0.95" : "0.82";
+                }
+              }}
+            >
+              Resources <Chevron open={isResourcesOpen} />
+            </button>
+
+            {isResourcesOpen && (
+              <div
+                className="hover-safe-bridge"
+                onMouseEnter={handleMenuEnter}
+                style={{
+                  position: "absolute",
+                  bottom: 0,
+                  left: -30,
+                  right: -30,
+                  height: 30,
+                  background: "transparent",
+                  zIndex: 101,
+                  pointerEvents: "auto",
+                }}
+              />
+            )}
+          </div>
+
+          <a
+            href="about.html"
+            style={linkStyle}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = hoverColor;
+              e.currentTarget.style.opacity = "1";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = navColor;
+              e.currentTarget.style.opacity = onLightSubpage ? "0.95" : "0.82";
+            }}
+          >
+            About
+          </a>
+
+          <a
+            href="contact.html"
+            style={linkStyle}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = hoverColor;
+              e.currentTarget.style.opacity = "1";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = navColor;
+              e.currentTarget.style.opacity = onLightSubpage ? "0.95" : "0.82";
+            }}
+          >
+            Contact
+          </a>
+        </div>
+
+        {/* Right CTA Button (Theme Toggle hidden as dark mode is disabled per request) */}
+        <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
+          {/* Animated, Highly-Attractive Magnetic Consultation CTA */}
+          <a
+            className="btn btn-primary nav-cta nav-cta-animated"
+            href="contact.html"
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: 9,
+              fontFamily: "Manrope, Arial, sans-serif",
+              fontSize: "0.6875rem",
+              fontWeight: 700,
+              lineHeight: 1.6,
+              letterSpacing: "0.105em",
+              textTransform: "uppercase",
+              borderRadius: 6,
+              padding: "10px 20px",
+              background: "linear-gradient(135deg, #0e7a5f 0%, #085542 100%)",
+              color: "#ffffff",
+              border: "1px solid rgba(192, 236, 217, 0.4)",
+              boxShadow: "0 4px 18px rgba(14, 122, 95, 0.32), inset 0 1px 1px rgba(255, 255, 255, 0.35)",
+              textDecoration: "none",
+              cursor: "pointer",
+              position: "relative",
+              overflow: "hidden",
+              transition: "transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, filter 0.3s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = "scale(1.05) translateY(-2px)";
+              e.currentTarget.style.boxShadow = "0 8px 26px rgba(14, 122, 95, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.5)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = "scale(1) translateY(0)";
+              e.currentTarget.style.boxShadow = "0 4px 18px rgba(14, 122, 95, 0.32), inset 0 1px 1px rgba(255, 255, 255, 0.35)";
+            }}
+          >
+            <span
+              className="cta-live-pulse-dot"
+              style={{
+                width: 6,
+                height: 6,
+                borderRadius: "50%",
+                background: "#c0ecd9",
+                boxShadow: "0 0 8px #c0ecd9",
+                display: "inline-block",
+              }}
+            />
+            <span>Book a consultation</span>
+            <span className="cta-arrow" style={{ fontSize: 13, display: "inline-block", transition: "transform 0.2s ease" }}>→</span>
+          </a>
+
+          {/* Hamburger Menu on Mobile */}
           <button
             type="button"
-            className="btn btn-ghost burger-btn"
+            className="hamburger-btn"
             onClick={onOpenDrawer}
             aria-label="Open menu"
-            style={{ display: "none", padding: 12 }}
+            style={{
+              display: "none",
+              background: "none",
+              border: 0,
+              color: navColor,
+              padding: 6,
+              cursor: "pointer",
+            }}
           >
-            <svg viewBox="0 0 24 24" width={20} height={20} fill="none" stroke="currentColor" strokeWidth="1.75" strokeLinecap="round" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width={24} height={24} fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
               <path d="M4 6h16M4 12h16M4 18h16" />
             </svg>
           </button>
         </div>
-        <style>{`
-          @media (max-width: 1180px) {
-            .site-nav > a.btn, .site-nav > button[aria-label="Toggle color theme"] { display: none !important; }
-          }
-          @media (max-width: 1080px) {
-            .site-nav { display: none !important; }
-            .burger-btn { display: inline-flex !important; }
-          }
-        `}</style>
-      </header>
-    </>
+      </nav>
+
+      {/* =========================================================================
+          BACKGROUND-BLENDED NESTED DROPDOWNS (Matches Template Aesthetic)
+          ========================================================================= */}
+
+      {/* Dropdown Soft Backdrop Veil */}
+      {isDropdownOpen && (
+        <div
+          onClick={() => setOpenId(null)}
+          aria-hidden="true"
+          style={{
+            position: "fixed",
+            inset: 0,
+            top: 84,
+            background: "rgba(2, 25, 36, 0.45)",
+            backdropFilter: "blur(6px)",
+            WebkitBackdropFilter: "blur(6px)",
+            zIndex: 85,
+            transition: "opacity 0.25s ease",
+          }}
+        />
+      )}
+
+      {/* Mega Menu Dropdown (100% Opaque Light Porcelain Theme, Zero Bleed-Through) */}
+      {activeMega && (
+        <div
+          className="mega-dropdown-blended"
+          onMouseEnter={handleMenuEnter}
+          onMouseLeave={scheduleClose}
+          style={{
+            position: "absolute",
+            left: 0,
+            right: 0,
+            top: "100%",
+            zIndex: 90,
+            background: "#ffffff",
+            borderTop: "1px solid rgba(14, 122, 95, 0.12)",
+            borderBottom: "1px solid rgba(14, 122, 95, 0.16)",
+            boxShadow: "0 32px 70px -15px rgba(2, 25, 36, 0.18), 0 12px 24px -6px rgba(2, 25, 36, 0.08)",
+          }}
+        >
+          {/* Safe Triangle Invisible Area */}
+          <div
+            style={{
+              position: "absolute",
+              top: -24,
+              left: 0,
+              right: 0,
+              height: 26,
+              background: "transparent",
+              pointerEvents: "auto",
+            }}
+          />
+
+          <div
+            style={{
+              maxWidth: 1400,
+              margin: "0 auto",
+              padding: "36px clamp(24px, 4vw, 48px) 38px",
+              display: "grid",
+              gridTemplateColumns: `repeat(${activeMega.cols.length + 1}, 1fr)`,
+              gap: 32,
+            }}
+          >
+            {activeMega.cols.map((col) => (
+              <div key={col.title}>
+                <h4
+                  style={{
+                    fontFamily: "Manrope, Arial, sans-serif",
+                    fontSize: "0.75rem",
+                    fontWeight: 700,
+                    letterSpacing: "0.14em",
+                    textTransform: "uppercase",
+                    color: "#0e7a5f",
+                    marginBottom: 12,
+                  }}
+                >
+                  {col.href ? (
+                    <a href={col.href} style={{ textDecoration: "none", color: "inherit" }}>
+                      {col.title}
+                    </a>
+                  ) : (
+                    col.title
+                  )}
+                </h4>
+                <ul
+                  style={{
+                    listStyle: "none",
+                    margin: 0,
+                    padding: 0,
+                    borderTop: "1px solid rgba(14, 122, 95, 0.12)",
+                    paddingTop: 14,
+                    display: "grid",
+                    gap: 6,
+                  }}
+                >
+                  {col.links.map((l) => (
+                    <li key={l.href}>
+                      <a
+                        href={l.href}
+                        style={{
+                          display: "block",
+                          textDecoration: "none",
+                          fontSize: 14.5,
+                          fontFamily: "Manrope, Arial, sans-serif",
+                          fontWeight: 500,
+                          padding: "6px 0",
+                          color: "#021924",
+                          opacity: 0.9,
+                          transition: "color 0.2s, opacity 0.2s, transform 0.2s",
+                        }}
+                        onMouseEnter={(e) => {
+                          e.currentTarget.style.color = "#0e7a5f";
+                          e.currentTarget.style.opacity = "1";
+                          e.currentTarget.style.transform = "translateX(4px)";
+                        }}
+                        onMouseLeave={(e) => {
+                          e.currentTarget.style.color = "#021924";
+                          e.currentTarget.style.opacity = "0.9";
+                          e.currentTarget.style.transform = "translateX(0)";
+                        }}
+                      >
+                        {l.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+
+            {/* Featured Box */}
+            <div
+              style={{
+                background: "linear-gradient(145deg, #f0f7f4 0%, #e6f3ed 100%)",
+                padding: 24,
+                borderRadius: 16,
+                display: "grid",
+                gap: 12,
+                alignContent: "start",
+                border: "1px solid rgba(14, 122, 95, 0.18)",
+                boxShadow: "0 8px 24px rgba(14, 122, 95, 0.06)",
+              }}
+            >
+              <span
+                className="mono"
+                style={{
+                  fontSize: 10.5,
+                  letterSpacing: "0.16em",
+                  textTransform: "uppercase",
+                  color: "#0e7a5f",
+                  fontWeight: 700,
+                }}
+              >
+                Featured
+              </span>
+              <b
+                style={{
+                  fontFamily: '"Instrument Serif", Georgia, serif',
+                  fontWeight: 400,
+                  fontSize: 22,
+                  lineHeight: 1.25,
+                  color: "#021924",
+                }}
+              >
+                {activeMega.id === "mega-hiring"
+                  ? "Setting up an India GCC or Engineering Team?"
+                  : activeMega.id === "mega-services"
+                  ? "Production-Grade AI & Cloud Systems"
+                  : "Applied Generative AI & Cloud Upskilling"}
+              </b>
+              <span style={{ color: "#3a5666", fontSize: 13.5, lineHeight: 1.6 }}>
+                {activeMega.id === "mega-hiring"
+                  ? "Leadership first, foundation team of 20-50, then scale. Phase-by-phase roadmap."
+                  : activeMega.id === "mega-services"
+                  ? "Product engineering, applied AI and cloud systems, delivered in two-week sprints."
+                  : "Live, lab-based programmes for IT corporates and institutes, roughly 70% hands-on."}
+              </span>
+              <a
+                href={
+                  activeMega.id === "mega-hiring"
+                    ? "gcc-hiring.html"
+                    : activeMega.id === "mega-services"
+                    ? "it-services.html"
+                    : "corporate-training.html"
+                }
+                style={{
+                  color: "#0e7a5f",
+                  fontWeight: 700,
+                  fontSize: 13.5,
+                  textDecoration: "none",
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: 6,
+                  marginTop: 4,
+                }}
+              >
+                View details →
+              </a>
+            </div>
+          </div>
+
+          {/* Bottom Foot Strip */}
+          <div
+            style={{
+              borderTop: "1px solid rgba(14, 122, 95, 0.1)",
+              background: "#f4f8f6",
+            }}
+          >
+            <div
+              style={{
+                maxWidth: 1400,
+                margin: "0 auto",
+                padding: "12px clamp(24px, 4vw, 48px)",
+                display: "flex",
+                justifyContent: "space-between",
+                gap: 16,
+                flexWrap: "wrap",
+                fontSize: 13,
+                color: "#456372",
+              }}
+            >
+              <span>{activeMega.foot}</span>
+              <a
+                href={activeMega.footHref}
+                style={{ color: "#0e7a5f", fontWeight: 700, textDecoration: "none" }}
+              >
+                {activeMega.footLabel} →
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Resources Dropdown (100% Opaque Light Porcelain Theme, Zero Bleed-Through) */}
+      {isResourcesOpen && (
+        <div
+          className="mega-dropdown-blended"
+          onMouseEnter={handleMenuEnter}
+          onMouseLeave={scheduleClose}
+          style={{
+            position: "absolute",
+            left: 0,
+            right: 0,
+            top: "100%",
+            zIndex: 90,
+            background: "#ffffff",
+            borderTop: "1px solid rgba(14, 122, 95, 0.12)",
+            borderBottom: "1px solid rgba(14, 122, 95, 0.16)",
+            boxShadow: "0 32px 70px -15px rgba(2, 25, 36, 0.18), 0 12px 24px -6px rgba(2, 25, 36, 0.08)",
+          }}
+        >
+          {/* Safe Triangle Invisible Area */}
+          <div
+            style={{
+              position: "absolute",
+              top: -24,
+              left: 0,
+              right: 0,
+              height: 26,
+              background: "transparent",
+              pointerEvents: "auto",
+            }}
+          />
+
+          <div
+            style={{
+              maxWidth: 1400,
+              margin: "0 auto",
+              padding: "36px clamp(24px, 4vw, 48px) 38px",
+              display: "grid",
+              gridTemplateColumns: "repeat(3, 1fr)",
+              gap: 28,
+            }}
+          >
+            {RESOURCES_CARDS.map((c) => (
+              <a
+                key={c.href}
+                href={c.href}
+                style={{
+                  padding: 24,
+                  borderRadius: 16,
+                  display: "grid",
+                  gap: 8,
+                  textDecoration: "none",
+                  color: "inherit",
+                  background: "#f8fbf9",
+                  border: "1px solid rgba(14, 122, 95, 0.14)",
+                  boxShadow: "0 6px 18px rgba(2, 25, 36, 0.03)",
+                  transition: "border-color 0.25s, transform 0.25s, background 0.25s, box-shadow 0.25s",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.borderColor = "#0e7a5f";
+                  e.currentTarget.style.background = "#ffffff";
+                  e.currentTarget.style.boxShadow = "0 12px 28px rgba(14, 122, 95, 0.12)";
+                  e.currentTarget.style.transform = "translateY(-2px)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.borderColor = "rgba(14, 122, 95, 0.14)";
+                  e.currentTarget.style.background = "#f8fbf9";
+                  e.currentTarget.style.boxShadow = "0 6px 18px rgba(2, 25, 36, 0.03)";
+                  e.currentTarget.style.transform = "translateY(0)";
+                }}
+              >
+                <b
+                  style={{
+                    fontFamily: '"Instrument Serif", Georgia, serif',
+                    fontWeight: 400,
+                    fontSize: 22,
+                    color: "#021924",
+                  }}
+                >
+                  {c.label}
+                </b>
+                <span style={{ color: "#456372", fontSize: 13.5, lineHeight: 1.6 }}>
+                  {c.href === "blog.html"
+                    ? "Technical insights and playbooks on software, AI, QA, hiring and engineering training."
+                    : c.href === "case-studies.html"
+                    ? "Proven client outcomes across enterprise delivery, GCC setups and corporate upskilling."
+                    : "Answers on SLAs, contract terms, IP ownership, rates, hiring timelines and curriculums."}
+                </span>
+              </a>
+            ))}
+          </div>
+
+          <div
+            style={{
+              borderTop: "1px solid rgba(14, 122, 95, 0.1)",
+              background: "#f4f8f6",
+            }}
+          >
+            <div
+              style={{
+                maxWidth: 1400,
+                margin: "0 auto",
+                padding: "12px clamp(24px, 4vw, 48px)",
+                display: "flex",
+                justifyContent: "space-between",
+                gap: 16,
+                flexWrap: "wrap",
+                fontSize: 13,
+                color: "#456372",
+              }}
+            >
+              <span>Guides, case studies and answers from our engineers, recruiters and trainers.</span>
+              <a href="resources.html" style={{ color: "#0e7a5f", fontWeight: 700, textDecoration: "none" }}>
+                All resources →
+              </a>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <style>{`
+        @media (max-width: 1080px) {
+          .nav-links { display: none !important; }
+          .hamburger-btn { display: inline-flex !important; }
+        }
+        @media (max-width: 640px) {
+          .nav-cta { display: none !important; }
+          .site-header { padding: 0 16px !important; }
+        }
+      `}</style>
+    </header>
   );
 }

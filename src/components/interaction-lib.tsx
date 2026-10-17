@@ -130,6 +130,11 @@ export function DimSiblings({
     const root = ref.current;
     if (!root) return;
 
+    // Dimming is a hover affordance. On touch (no fine pointer / no hover),
+    // a tap fires pointerover but never pointerleave, so the siblings would
+    // stay stuck at 0.2 opacity and read as invisible. Skip it entirely there.
+    if (!window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+
     const rows = () => Array.from(root.querySelectorAll<HTMLElement>(selector));
 
     const onEnter = (e: Event) => {
@@ -192,7 +197,7 @@ export function LinkImageSwap({
                 borderBottom: "1px solid var(--line)",
                 color: isActive ? "var(--accent-strong)" : "var(--text)",
                 textDecoration: "none",
-                fontFamily: '"Bricolage Grotesque", sans-serif',
+                fontFamily: '"Instrument Serif", Georgia, serif',
                 fontSize: "clamp(1.35rem, 2.6vw, 2rem)",
                 letterSpacing: "-0.02em",
                 /* Active list item is fully emphasised; others dim to 0.75

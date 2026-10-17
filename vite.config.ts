@@ -1,23 +1,43 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
-import { resolve, basename } from "node:path";
-import { readdirSync } from "node:fs";
+import { resolve } from "node:path";
 
 const root = import.meta.dirname;
 
-/* Every root-level .html file becomes a build entry automatically,
-   so new pages only need their .html + main.tsx scaffold. */
-const inputs: Record<string, string> = {};
-for (const f of readdirSync(root)) {
-  if (f.endsWith(".html")) inputs[basename(f, ".html")] = resolve(root, f);
-}
-
 export default defineConfig({
-  plugins: [react(), tailwindcss()],
-  build: {
-    rollupOptions: {
-      input: inputs,
+  plugins: [
+    react(),
+    tailwindcss(),
+    {
+      name: "spa-html-rewriter",
+      configureServer(server) {
+        server.middlewares.use((req, res, next) => {
+          // If a request ends with .html (e.g. /about.html or /custom-software-development.html),
+          // rewrite internal URL to /index.html so React Router handles it client-side.
+          if (
+            req.url &&
+            req.url !== "/index.html" &&
+            req.url.endsWith(".html") &&
+            !req.url.startsWith("/@") &&
+            !req.url.startsWith("/src/") &&
+            !req.url.startsWith("/assets/")
+          ) {
+            req.url = "/index.html";
+          }
+          next();
+        });
+      },
     },
+  ],
+  resolve: {
+    alias: {
+      "@": resolve(root, "./src"),
+    },
+  },
+  server: {
+    port: 5173,
+    strictPort: true,
+    host: true,
   },
 });

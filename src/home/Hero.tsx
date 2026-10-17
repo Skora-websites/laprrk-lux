@@ -1,128 +1,124 @@
-import { useRef } from "react";
-import { gsap, ScrollTrigger, useGsapContext } from "../lib/motion";
+import { Fragment, useRef } from "react";
+import { gsap, useGsapContext } from "../lib/motion";
 import { CountUp } from "../components/motion-primitives";
-import { HERO, CONSOLE_ROWS, CONSOLE_TRAINING, MARQUEE, STATS } from "../lib/home-data";
+import { Magnetic } from "../components/effects";
+import { HERO, MARQUEE, STATS } from "../lib/home-data";
+import { HeroAurora } from "./HeroAurora";
 
-const FLOAT_CARDS = [
-  { ...CONSOLE_ROWS[0], icon: "◈" },
-  { ...CONSOLE_ROWS[1], icon: "⬢" },
-  {
-    title: CONSOLE_TRAINING.title,
-    sub: "For IT corporates and institutes · around 70% hands-on",
-    tag: CONSOLE_TRAINING.tag,
-    href: "corporate-training.html",
-    icon: "✦",
-  },
-];
-
-/* One glass composition for the right column: the three practices as
-   depth-stacked rows (the reference site's card-pile treatment) with the
-   punchline as the base plate. Replaces the previous orb + LAPRRK badge +
-   ribbon + three loose cards, which read as five competing motifs. */
-function Visual() {
-  return (
-    <div className="tn-visual" data-h="visual">
-      <div className="tn-glow" aria-hidden="true" />
-      <div className="tn-stack" data-h="stack">
-        {FLOAT_CARDS.map((c, i) => (
-          <a className="tn-stack-row" data-layer={i} href={c.href} key={c.href}>
-            <span className="icon-badge tn-stack-ic" aria-hidden="true">{c.icon}</span>
-            <span className="tn-stack-text">
-              <strong className="tn-stack-t">{c.title}</strong>
-              <small className="tn-stack-s">{c.sub}</small>
-            </span>
-            <span className="tn-stack-k mono" aria-hidden="true">
-              0{i + 1}
-              <span className="tn-stack-arrow" aria-hidden="true">→</span>
-            </span>
-          </a>
-        ))}
-        <a className="tn-stack-core" href={HERO.ctaSecondary.href}>
-          <span className="tn-stack-core-num" aria-hidden="true">3</span>
-          <span className="tn-stack-core-lab">
-            practices, one partner
-            <span className="tn-stack-core-cta" aria-hidden="true">→</span>
-          </span>
-        </a>
-      </div>
-    </div>
-  );
+/** Split the headline into animatable words, keeping the emphasised phrase. */
+function useHeadline() {
+  const em = new Set(HERO.headline.em.split(/\s+/).filter(Boolean));
+  const text = `${HERO.headline.before}${HERO.headline.em}${HERO.headline.after}`;
+  const words = text.split(/\s+/).filter(Boolean);
+  return { em, words };
 }
 
 export function Hero() {
   const root = useRef<HTMLElement>(null);
+  const { em, words } = useHeadline();
 
   useGsapContext(() => {
     const el = root.current;
     if (!el) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const hero = el;
 
-    /* Entrance choreography (fromTo: explicit end states, so an interrupted
-       tween can never leave content stuck invisible). */
+    /* ---- entrance choreography: words tumble in on a 3D X rotation ---- */
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
-    tl.fromTo("[data-h='eyebrow']", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, delay: 0.1 })
-      .fromTo("[data-h='title']", { y: 56, opacity: 0 }, { y: 0, opacity: 1, duration: 0.9 }, "-=0.35")
-      .fromTo("[data-h='lede']", { y: 28, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 }, "-=0.45")
-      .fromTo("[data-h='cta']", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, "-=0.4")
-      .fromTo("[data-h='stat']", { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.55, stagger: 0.08 }, "-=0.35")
-      .fromTo("[data-h='latest']", { y: 24, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, "-=0.3")
-      /* The stack settles from a single plane into three layered rows. */
-      .fromTo("[data-h='stack']", { scale: 0.94, opacity: 0 }, { scale: 1, opacity: 1, duration: 1, ease: "power4.out" }, 0.25)
-      .fromTo("[data-layer]", { y: 26, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7, stagger: 0.12 }, 0.5)
-      .fromTo(".tn-stack-core", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, 0.9);
+    tl.fromTo("[data-h='eyebrow']", { y: 20, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6, delay: 0.1 })
+      .fromTo(
+        ".hero-word",
+        { y: 64, opacity: 0, rotationX: -80, transformOrigin: "50% 100%" },
+        { y: 0, opacity: 1, rotationX: 0, duration: 1, stagger: 0.035 },
+        "-=0.25",
+      )
+      .fromTo("[data-h='lede']", { y: 26, opacity: 0 }, { y: 0, opacity: 1, duration: 0.7 }, "-=0.55")
+      .fromTo("[data-h='cta']", { y: 18, opacity: 0 }, { y: 0, opacity: 1, duration: 0.6 }, "-=0.45")
+      .fromTo(
+        "[data-h='trust']",
+        { y: 14, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.5 },
+        "-=0.35",
+      )
+      .fromTo(
+        "[data-h='stat']",
+        { y: 18, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.55, stagger: 0.08 },
+        "-=0.4",
+      );
+    // Failsafe for throttled webviews: never leave content hidden.
+    window.setTimeout(() => {
+      if (tl.progress() < 1) tl.progress(1);
+    }, 3600);
 
-    /* Pinned gentle exit: the stage drifts and dims, then reverses on scroll-up. */
-    ScrollTrigger.create({
-      trigger: el,
-      start: "top top",
-      end: "bottom top",
-      pin: true,
-      pinSpacing: true,
-      anticipatePin: 1,
-      scrub: true,
-      animation: gsap.timeline().to("[data-h='stage']", { y: -40, opacity: 0.55, ease: "none" }),
-    });
-  }, [], root);
+    /* ---- scrubbed exit: the stage drifts and dims (NO pinning → free scroll) ---- */
+    gsap
+      .timeline({
+        scrollTrigger: {
+          trigger: hero,
+          start: "top top",
+          end: "bottom top",
+          scrub: 0.6,
+        },
+      })
+      .to("[data-h='stage']", { y: -50, opacity: 0.4, ease: "none" }, 0);
+  }, []);
 
   return (
-    <section ref={root} className="hero" id="top">
-      <div className="hero-veil" aria-hidden="true" />
-      <div className="hero-grid" aria-hidden="true" />
-      <div className="container tn-stage" data-h="stage">
-        <div className="tn-copy">
-          <p className="eyebrow" data-h="eyebrow">
-            <i className="eyebrow-dot" aria-hidden="true" />
-            {HERO.eyebrow}
-          </p>
-          <h1 className="hero-title" data-h="title">
-            {HERO.headline.before}
-            <span className="em-gold">{HERO.headline.em}</span>
-            {HERO.headline.after}
-          </h1>
-          <p className="lede" data-h="lede">{HERO.lede}</p>
-          <div className="hero-ctas" data-h="cta">
-            <a className="btn btn-gold btn-lg" href={HERO.ctaPrimary.href}>{HERO.ctaPrimary.label} →</a>
-            <a className="tn-play" href={HERO.ctaSecondary.href}>
-              <span className="tn-play-btn" aria-hidden="true">→</span>
-              <span className="tn-play-text">
-                <strong>{HERO.ctaSecondary.label}</strong>
-                <small>See what we do</small>
+    <section ref={root} className="hero hero-aurora" id="top">
+      <HeroAurora />
+
+      <div className="container hero-center" data-h="stage">
+        <p className="eyebrow hero-eyebrow" data-h="eyebrow">
+          <i className="eyebrow-dot" aria-hidden="true" />
+          {HERO.eyebrow}
+        </p>
+
+        <h1 className="hero-title hero-title-big">
+          {words.map((w, i) => (
+            <Fragment key={`${w}-${i}`}>
+              <span
+                className="hero-word"
+                data-em={em.has(w) ? "" : undefined}
+                style={{ perspective: 900 }}
+              >
+                {w}
               </span>
+              {i < words.length - 1 ? " " : ""}
+            </Fragment>
+          ))}
+        </h1>
+
+        <p className="lede hero-sub" data-h="lede">
+          {HERO.lede}
+        </p>
+
+        <div className="hero-actions" data-h="cta">
+          <Magnetic strength={0.25}>
+            <a className="btn btn-gold btn-lg" href={HERO.ctaPrimary.href}>
+              {HERO.ctaPrimary.label} →
             </a>
-          </div>
-          <a className="tn-latest glass" data-h="latest" href="case-studies.html">
-            <img src="https://picsum.photos/seed/laprrk-latest-work/240/180" alt="" loading="lazy" width={240} height={180} />
-            <span className="tn-latest-text">
-              <strong>Representative engagements</strong>
-              <small>GenAI, GCC hiring and upskilling stories.</small>
-            </span>
-            <span className="tn-arrow" aria-hidden="true">→</span>
-          </a>
+          </Magnetic>
+          <Magnetic strength={0.35}>
+            <a className="btn btn-glass btn-lg" href="#services">
+              <span className="btn-glass-ic" aria-hidden="true">→</span>
+              {HERO.ctaSecondary.label}
+            </a>
+          </Magnetic>
         </div>
-        <Visual />
-        <dl className="tn-stats">
+
+        <ul className="hero-trust" data-h="trust">
+          {HERO.meta.map((m) => (
+            <li key={m}>
+              <span aria-hidden="true">✓</span>
+              {m}
+            </li>
+          ))}
+        </ul>
+
+        <dl className="hero-stats">
           {STATS.map((s) => (
-            <div className="tn-stat" data-h="stat" key={s.label}>
+            <div className="hero-stat" data-h="stat" key={s.label}>
               <dt>
                 <CountUp value={s.value} />
                 <span className="stat-suffix">{s.suffix}</span>
@@ -132,11 +128,14 @@ export function Hero() {
           ))}
         </dl>
       </div>
+
       <div className="marquee" aria-hidden="true">
         <div className="marquee-track">
           {[0, 1].map((k) => (
             <div className="marquee-group" key={k}>
-              {MARQUEE.map((m) => <span key={m + k}>{m}</span>)}
+              {MARQUEE.map((m) => (
+                <span key={m + k}>{m}</span>
+              ))}
             </div>
           ))}
         </div>

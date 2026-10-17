@@ -29,17 +29,24 @@ export function Reveal({
       gsap.set(targets, { clearProps: "all" });
       return;
     }
+    // If already in viewport on mount, trigger immediately
+    const rect = el.getBoundingClientRect();
+    const inView = rect.top < window.innerHeight * 0.95;
+
     gsap.fromTo(
       targets,
-      { opacity: 0, y },
+      { opacity: inView ? 0.3 : 0, y: Math.min(y, 20) },
       {
         opacity: 1,
         y: 0,
-        duration: 0.8,
+        duration: 0.65,
         delay,
-        ease: "power3.out",
+        ease: "power2.out",
         stagger,
-        scrollTrigger: { trigger: el, start: "top 82%", once: true },
+        scrollTrigger: inView ? undefined : { trigger: el, start: "top 96%", once: true },
+        onComplete: () => {
+          gsap.set(targets, { clearProps: "opacity,transform" });
+        },
       },
     );
   }, [y, stagger, delay]);
