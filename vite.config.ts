@@ -6,6 +6,7 @@ import { resolve } from "node:path";
 const root = import.meta.dirname;
 
 export default defineConfig({
+  base: "./",
   plugins: [
     react(),
     tailwindcss(),
