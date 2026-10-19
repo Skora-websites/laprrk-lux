@@ -8,7 +8,7 @@ import { PAGES, getPage } from "./pages/data";
  * Normalizes slug by stripping leading slashes, hashes, query params, and trailing .html
  */
 function cleanSlug(path: string): string {
-  let s = path.replace(/^\/+/, "").replace(/\.html$/, "");
+  let s = path.replace(/^\/+/, "").split("#")[0].split("?")[0].replace(/\.html$/, "");
   if (!s || s === "index") return "";
   return s;
 }
@@ -24,10 +24,18 @@ function SubpageRenderer() {
   const pathPart = location.pathname.split("/").filter(Boolean).pop() || "";
   const slug = cleanSlug(params.slug || pathPart);
 
-  // Scroll to top on page navigation
+  // Scroll to top on page navigation (or to hash anchor if present)
   useEffect(() => {
-    window.scrollTo({ top: 0, behavior: "instant" });
-  }, [slug]);
+    if (location.hash) {
+      const id = location.hash.replace(/^#/, "");
+      setTimeout(() => {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: "smooth" });
+      }, 100);
+    } else {
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
+  }, [slug, location.hash]);
 
   // Page title update
   const pageData = getPage(slug || "about");
@@ -72,37 +80,64 @@ function ClientNavigationInterceptor({ children }: { children: React.ReactNode }
         return;
       }
 
-      // Handle anchor hash links on the same page
-      if (href.startsWith("#")) {
-        const id = href.slice(1);
-        const el = document.getElementById(id);
+      // Parse path and hash from href
+      let path = href;
+      let hash = "";
+      const hashIndex = path.indexOf("#");
+      if (hashIndex !== -1) {
+        hash = path.slice(hashIndex + 1);
+        path = path.slice(0, hashIndex);
+      }
+
+      // Normalize clean slug
+      const clean = cleanSlug(path);
+
+      // Case 1: Pure hash on the current page (e.g. href="#scope")
+      if (!path && hash) {
+        e.preventDefault();
+        const el = document.getElementById(hash);
         if (el) {
-          e.preventDefault();
           el.scrollIntoView({ behavior: "smooth" });
+          window.history.replaceState(null, "", `#${hash}`);
+        } else if (location.pathname !== "/" && location.pathname !== "/index.html") {
+          // Element might be on the home page
+          navigate(`/#${hash}`);
         }
         return;
       }
 
-      // If linking to home
-      if (href === "/" || href === "/index.html" || href === "index.html") {
+      // Case 2: Link to home with or without hash (e.g. "/" or "/#services" or "/index.html")
+      if (!clean) {
         e.preventDefault();
-        navigate("/");
-        window.scrollTo({ top: 0, behavior: "smooth" });
+        navigate(hash ? `/#${hash}` : "/");
+        if (hash) {
+          setTimeout(() => {
+            const el = document.getElementById(hash);
+            if (el) el.scrollIntoView({ behavior: "smooth" });
+          }, 80);
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
         return;
       }
 
-      // Internal subpage link: /something.html or something.html
-      const clean = href.replace(/^\/+/, "").replace(/\.html$/, "");
-      if (clean in PAGES || clean.length > 0) {
-        e.preventDefault();
-        navigate(`/${clean}.html`);
+      // Case 3: Link to a subpage with or without hash (e.g. "/devops-devsecops.html" or "technologies-roles-we-recruit.html#java-jvm")
+      e.preventDefault();
+      const targetUrl = `/${clean}.html${hash ? '#' + hash : ''}`;
+      navigate(targetUrl);
+      if (hash) {
+        setTimeout(() => {
+          const el = document.getElementById(hash);
+          if (el) el.scrollIntoView({ behavior: "smooth" });
+        }, 120);
+      } else {
         window.scrollTo({ top: 0, behavior: "smooth" });
       }
     };
 
     document.addEventListener("click", handleClick, { capture: true });
     return () => document.removeEventListener("click", handleClick, { capture: true });
-  }, [navigate]);
+  }, [navigate, location.pathname]);
 
   // Scroll to top on route change
   useEffect(() => {
