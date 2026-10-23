@@ -62,7 +62,7 @@ export function SiteHeader({ onOpenDrawer }: { onOpenDrawer: () => void }) {
   const [isHome, setIsHome] = useState(() => {
     if (typeof window === "undefined") return true;
     const p = window.location.pathname;
-    return p === "" || p === "/" || p.endsWith("index.html");
+    return p === "" || p === "/";
   });
   const [isScrolled, setIsScrolled] = useState(false);
   const headRef = useRef<HTMLElement>(null);
@@ -71,7 +71,7 @@ export function SiteHeader({ onOpenDrawer }: { onOpenDrawer: () => void }) {
   useEffect(() => {
     const isHomePage =
       typeof window !== "undefined" &&
-      (window.location.pathname === "/" || window.location.pathname === "" || window.location.pathname.endsWith("index.html"));
+      (window.location.pathname === "/" || window.location.pathname === "");
     setIsHome(isHomePage);
 
     const checkTheme = () => {
@@ -325,7 +325,7 @@ export function SiteHeader({ onOpenDrawer }: { onOpenDrawer: () => void }) {
           </div>
 
           <a
-            href="about.html"
+            href="about"
             style={linkStyle}
             onMouseEnter={(e) => {
               e.currentTarget.style.color = hoverColor;
@@ -340,7 +340,7 @@ export function SiteHeader({ onOpenDrawer }: { onOpenDrawer: () => void }) {
           </a>
 
           <a
-            href="contact.html"
+            href="contact"
             style={linkStyle}
             onMouseEnter={(e) => {
               e.currentTarget.style.color = hoverColor;
@@ -360,7 +360,7 @@ export function SiteHeader({ onOpenDrawer }: { onOpenDrawer: () => void }) {
           {/* Animated, Highly-Attractive Magnetic Consultation CTA */}
           <a
             className="btn btn-primary nav-cta nav-cta-animated"
-            href="contact.html"
+            href="contact"
             style={{
               display: "inline-flex",
               alignItems: "center",
@@ -608,10 +608,10 @@ export function SiteHeader({ onOpenDrawer }: { onOpenDrawer: () => void }) {
               <a
                 href={
                   activeMega.id === "mega-hiring"
-                    ? "gcc-hiring.html"
+                    ? "gcc-hiring"
                     : activeMega.id === "mega-services"
-                    ? "it-services.html"
-                    : "corporate-training.html"
+                    ? "it-services"
+                    : "corporate-training"
                 }
                 style={{
                   color: "#0e7a5f",
@@ -742,9 +742,9 @@ export function SiteHeader({ onOpenDrawer }: { onOpenDrawer: () => void }) {
                   {c.label}
                 </b>
                 <span style={{ color: "#456372", fontSize: 13.5, lineHeight: 1.6 }}>
-                  {c.href === "blog.html"
+                  {c.href === "blog"
                     ? "Technical insights and playbooks on software, AI, QA, hiring and engineering training."
-                    : c.href === "case-studies.html"
+                    : c.href === "case-studies"
                     ? "Proven client outcomes across enterprise delivery, GCC setups and corporate upskilling."
                     : "Answers on SLAs, contract terms, IP ownership, rates, hiring timelines and curriculums."}
                 </span>
@@ -772,7 +772,7 @@ export function SiteHeader({ onOpenDrawer }: { onOpenDrawer: () => void }) {
               }}
             >
               <span>Guides, case studies and answers from our engineers, recruiters and trainers.</span>
-              <a href="resources.html" style={{ color: "#0e7a5f", fontWeight: 700, textDecoration: "none" }}>
+              <a href="resources" style={{ color: "#0e7a5f", fontWeight: 700, textDecoration: "none" }}>
                 All resources →
               </a>
             </div>

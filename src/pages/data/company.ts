@@ -1,7 +1,7 @@
 import type { PageData } from "./types";
 import { CASES, POSTS, FAQS } from "../../lib/home-data";
 
-const BOOK = { label: "Book a free consultation", href: "contact.html" };
+const BOOK = { label: "Book a free consultation", href: "contact" };
 
 export const COMPANY_PAGES: Record<string, PageData> = {
   about: {
@@ -41,10 +41,10 @@ export const COMPANY_PAGES: Record<string, PageData> = {
       },
     ],
     related: [
-      { label: "IT Services", href: "it-services.html" },
-      { label: "Hiring Consultation", href: "hiring-consultation.html" },
-      { label: "Corporate Training", href: "corporate-training.html" },
-      { label: "Contact & offices", href: "contact.html" },
+      { label: "IT Services", href: "it-services" },
+      { label: "Hiring Consultation", href: "hiring-consultation" },
+      { label: "Corporate Training", href: "corporate-training" },
+      { label: "Contact & offices", href: "contact" },
     ],
   },
   contact: {
@@ -79,10 +79,10 @@ export const COMPANY_PAGES: Record<string, PageData> = {
       },
     ],
     related: [
-      { label: "IT Services", href: "it-services.html" },
-      { label: "Hiring Consultation", href: "hiring-consultation.html" },
-      { label: "Corporate Training", href: "corporate-training.html" },
-      { label: "FAQs", href: "faq.html" },
+      { label: "IT Services", href: "it-services" },
+      { label: "Hiring Consultation", href: "hiring-consultation" },
+      { label: "Corporate Training", href: "corporate-training" },
+      { label: "FAQs", href: "faq" },
     ],
   },
   resources: {
@@ -103,9 +103,9 @@ export const COMPANY_PAGES: Record<string, PageData> = {
       },
     ],
     related: [
-      { label: "Blog", href: "blog.html" },
-      { label: "Case studies", href: "case-studies.html" },
-      { label: "About Laprrk", href: "about.html" },
+      { label: "Blog", href: "blog" },
+      { label: "Case studies", href: "case-studies" },
+      { label: "About Laprrk", href: "about" },
       BOOK,
     ],
   },
@@ -123,9 +123,9 @@ export const COMPANY_PAGES: Record<string, PageData> = {
       },
     ],
     related: [
-      { label: "Case studies", href: "case-studies.html" },
-      { label: "FAQs", href: "faq.html" },
-      { label: "Resources", href: "resources.html" },
+      { label: "Case studies", href: "case-studies" },
+      { label: "FAQs", href: "faq" },
+      { label: "Resources", href: "resources" },
       BOOK,
     ],
   },
@@ -150,9 +150,9 @@ export const COMPANY_PAGES: Record<string, PageData> = {
       },
     ],
     related: [
-      { label: "IT Services", href: "it-services.html" },
-      { label: "Hiring Consultation", href: "hiring-consultation.html" },
-      { label: "Corporate Training", href: "corporate-training.html" },
+      { label: "IT Services", href: "it-services" },
+      { label: "Hiring Consultation", href: "hiring-consultation" },
+      { label: "Corporate Training", href: "corporate-training" },
       BOOK,
     ],
   },
@@ -164,7 +164,7 @@ export const COMPANY_PAGES: Record<string, PageData> = {
     lede: "Short answers to the questions every engagement starts with. Anything else, ask us directly.",
     blocks: [{ kind: "faqs", items: FAQS }],
     related: [
-      { label: "Contact & offices", href: "contact.html" },
+      { label: "Contact & offices", href: "contact" },
       { label: "About Laprrk", href: "about.html" },
       { label: "Resources", href: "resources.html" },
       BOOK,
@@ -189,9 +189,9 @@ export const COMPANY_PAGES: Record<string, PageData> = {
       },
     ],
     related: [
-      { label: "Terms of Service", href: "terms.html" },
-      { label: "Contact & offices", href: "contact.html" },
-      { label: "About Laprrk", href: "about.html" },
+      { label: "Terms of Service", href: "terms" },
+      { label: "Contact & offices", href: "contact" },
+      { label: "About Laprrk", href: "about" },
       BOOK,
     ],
   },
@@ -214,9 +214,9 @@ export const COMPANY_PAGES: Record<string, PageData> = {
       },
     ],
     related: [
-      { label: "Privacy Policy", href: "privacy-policy.html" },
-      { label: "Contact & offices", href: "contact.html" },
-      { label: "About Laprrk", href: "about.html" },
+      { label: "Privacy Policy", href: "privacy-policy" },
+      { label: "Contact & offices", href: "contact" },
+      { label: "About Laprrk", href: "about" },
       BOOK,
     ],
   },
@@ -251,9 +251,9 @@ export const COMPANY_PAGES: Record<string, PageData> = {
       },
     ],
     related: [
-      { label: "Generative AI & LLM Apps", href: "generative-ai.html" },
-      { label: "All case studies", href: "case-studies.html" },
-      { label: "QA & Test Automation", href: "qa-test-automation.html" },
+      { label: "Generative AI & LLM Apps", href: "generative-ai" },
+      { label: "All case studies", href: "case-studies" },
+      { label: "QA & Test Automation", href: "qa-test-automation" },
       BOOK,
     ],
   },
@@ -282,9 +282,9 @@ export const COMPANY_PAGES: Record<string, PageData> = {
       },
     ],
     related: [
-      { label: "GCC & India Team Setup", href: "gcc-hiring.html" },
-      { label: "All case studies", href: "case-studies.html" },
-      { label: "Executive Search", href: "executive-search.html" },
+      { label: "GCC & India Team Setup", href: "gcc-hiring" },
+      { label: "All case studies", href: "case-studies" },
+      { label: "Executive Search", href: "executive-search" },
       BOOK,
     ],
   },
@@ -313,9 +313,9 @@ export const COMPANY_PAGES: Record<string, PageData> = {
       },
     ],
     related: [
-      { label: "GenAI Training", href: "generative-ai-training.html" },
-      { label: "All case studies", href: "case-studies.html" },
-      { label: "Training for IT corporates", href: "training-for-it-corporates.html" },
+      { label: "GenAI Training", href: "generative-ai-training" },
+      { label: "All case studies", href: "case-studies" },
+      { label: "Training for IT corporates", href: "training-for-it-corporates" },
       BOOK,
     ],
   },
@@ -337,9 +337,9 @@ export const COMPANY_PAGES: Record<string, PageData> = {
       },
     ],
     related: [
-      { label: "NEP Credit Courses", href: "nep-credit-courses.html" },
-      { label: "Faculty Development", href: "faculty-development-programs.html" },
-      { label: "All articles", href: "blog.html" },
+      { label: "NEP Credit Courses", href: "nep-credit-courses" },
+      { label: "Faculty Development", href: "faculty-development-programs" },
+      { label: "All articles", href: "blog" },
       BOOK,
     ],
   },
@@ -361,9 +361,9 @@ export const COMPANY_PAGES: Record<string, PageData> = {
       },
     ],
     related: [
-      { label: "GenAI Training", href: "generative-ai-training.html" },
-      { label: "AI Literacy Training", href: "ai-literacy-training.html" },
-      { label: "All articles", href: "blog.html" },
+      { label: "GenAI Training", href: "generative-ai-training" },
+      { label: "AI Literacy Training", href: "ai-literacy-training" },
+      { label: "All articles", href: "blog" },
       BOOK,
     ],
   },
@@ -385,9 +385,9 @@ export const COMPANY_PAGES: Record<string, PageData> = {
       },
     ],
     related: [
-      { label: "Campus Hiring", href: "campus-hiring.html" },
-      { label: "Placement Training", href: "placement-training.html" },
-      { label: "All articles", href: "blog.html" },
+      { label: "Campus Hiring", href: "campus-hiring" },
+      { label: "Placement Training", href: "placement-training" },
+      { label: "All articles", href: "blog" },
       BOOK,
     ],
   },

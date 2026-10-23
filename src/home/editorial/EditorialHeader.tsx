@@ -379,7 +379,7 @@ export function EditorialHeader({ activePath }: { activePath?: string } = {}) {
 
           {/* 6. Contact Link */}
           <a
-            href="/contact.html"
+            href="/contact"
             style={{
               fontFamily: "Manrope, sans-serif",
               fontSize: "0.875rem",
@@ -398,7 +398,7 @@ export function EditorialHeader({ activePath }: { activePath?: string } = {}) {
         {/* Action Button & Mobile Toggle */}
         <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
           <a
-            href="/contact.html"
+            href="/contact"
             className="btn-editorial-primary desktop-cta"
             style={{
               padding: "11px 22px",
@@ -1109,7 +1109,7 @@ export function EditorialHeader({ activePath }: { activePath?: string } = {}) {
                     </a>
                   </li>
                   <li>
-                    <a href="/contact.html" onClick={() => setOpenDropdown(null)} className="mega-subpage-link" style={{ fontFamily: "Manrope, sans-serif", fontSize: "0.875rem", color: "#202D3A", textDecoration: "none", display: "block" }}>
+                    <a href="/contact" onClick={() => setOpenDropdown(null)} className="mega-subpage-link" style={{ fontFamily: "Manrope, sans-serif", fontSize: "0.875rem", color: "#202D3A", textDecoration: "none", display: "block" }}>
                       Global Office Locations
                     </a>
                   </li>
@@ -1134,7 +1134,7 @@ export function EditorialHeader({ activePath }: { activePath?: string } = {}) {
                   Speak directly with a solutions architect or talent partner within 24 hours.
                 </p>
                 <a
-                  href="/contact.html"
+                  href="/contact"
                   onClick={() => setOpenDropdown(null)}
                   style={{
                     fontFamily: "Space Grotesk, sans-serif",
@@ -1360,7 +1360,7 @@ export function EditorialHeader({ activePath }: { activePath?: string } = {}) {
                   <a href="/faq.html" onClick={() => setMobileMenuOpen(false)} style={{ fontFamily: "Manrope, sans-serif", fontSize: "0.9375rem", color: "#4A5568", textDecoration: "none", padding: "4px 0" }}>
                     Frequently Asked Questions
                   </a>
-                  <a href="/contact.html" onClick={() => setMobileMenuOpen(false)} style={{ fontFamily: "Manrope, sans-serif", fontSize: "0.9375rem", color: "#4A5568", textDecoration: "none", padding: "4px 0" }}>
+                  <a href="/contact" onClick={() => setMobileMenuOpen(false)} style={{ fontFamily: "Manrope, sans-serif", fontSize: "0.9375rem", color: "#4A5568", textDecoration: "none", padding: "4px 0" }}>
                     Global Locations &amp; Reach
                   </a>
                 </div>
@@ -1368,7 +1368,7 @@ export function EditorialHeader({ activePath }: { activePath?: string } = {}) {
             </div>
 
             <a
-              href="/contact.html"
+              href="/contact"
               onClick={() => setMobileMenuOpen(false)}
               style={{
                 fontFamily: "Space Grotesk, sans-serif",
@@ -1385,7 +1385,7 @@ export function EditorialHeader({ activePath }: { activePath?: string } = {}) {
           </nav>
 
           <a
-            href="/contact.html"
+            href="/contact"
             onClick={() => setMobileMenuOpen(false)}
             className="btn-editorial-primary"
             style={{ width: "100%", textAlign: "center", marginBottom: 24, padding: "14px", borderRadius: 6 }}

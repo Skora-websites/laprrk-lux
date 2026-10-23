@@ -210,7 +210,7 @@ export function HeroObject({ className = "" }: { className?: string }) {
                   ))}
                 </ul>
 
-                <a className="hx3d-footer" href="contact.html">
+                <a className="hx3d-footer" href="contact">
                   <span className="hx3d-footer-l">India delivery · USA hours</span>
                   <span className="hx3d-footer-r mono">IST + ET overlap</span>
                 </a>

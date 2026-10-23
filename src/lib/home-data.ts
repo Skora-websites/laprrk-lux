@@ -9,7 +9,7 @@ export const HERO = {
     after: ".",
   },
   lede: "We build production software and AI systems, place screened engineers in 5 to 7 business days, and run hands-on training with about 70% lab time. Delivery from India, client hours covered from the USA.",
-  ctaPrimary: { label: "Book a free consultation", href: "contact.html" },
+  ctaPrimary: { label: "Book a free consultation", href: "contact" },
   ctaSecondary: { label: "Explore services", href: "#services" },
   meta: [
     "NDA on day one",
@@ -23,13 +23,13 @@ export const CONSOLE_ROWS = [
     title: "IT Services",
     sub: "17 services · two-week sprints with a working demo each sprint",
     tag: "Build",
-    href: "it-services.html",
+    href: "it-services",
   },
   {
     title: "Hiring Consultation",
     sub: "Engineer-screened shortlist in 5 to 7 business days",
     tag: "Hire",
-    href: "hiring-consultation.html",
+    href: "hiring-consultation",
   },
 ];
 
@@ -37,10 +37,10 @@ export const CONSOLE_TRAINING = {
   title: "Training",
   sub: "Corporate tracks and institute programmes, one delivery standard",
   tag: "Upskill",
-  href: "corporate-training.html",
+  href: "corporate-training",
   subs: [
-    { title: "For IT Corporates", small: "18 tracks · around 70% hands-on", href: "training-for-it-corporates.html" },
-    { title: "For Institutes", small: "10 programmes · FDP, bootcamps, placement", href: "training-for-institutes.html" },
+    { title: "For IT Corporates", small: "18 tracks · around 70% hands-on", href: "training-for-it-corporates" },
+    { title: "For Institutes", small: "10 programmes · FDP, bootcamps, placement", href: "training-for-institutes" },
   ],
 };
 
@@ -69,72 +69,72 @@ export const SERVICES_HEAD = {
 export const DIVISIONS = [
   {
     title: "IT Services",
-    href: "it-services.html",
+    href: "it-services",
     num: "17 services",
     body: "Product engineering, applied GenAI and agentic AI, data platforms, cloud migration, DevOps, QA automation, security reviews and enterprise apps.",
     subs: [
-      { label: "Custom Software Development", href: "custom-software-development.html" },
-      { label: "Web Application Development", href: "web-application-development.html" },
-      { label: "Mobile App Development", href: "mobile-app-development.html" },
-      { label: "Generative AI & LLM Apps", href: "generative-ai.html" },
-      { label: "Agentic AI & Intelligent Automation", href: "agentic-ai-automation.html" },
-      { label: "Data Engineering, Analytics & BI", href: "data-engineering-analytics.html" },
-      { label: "Cloud Services & Migration", href: "cloud-services.html" },
-      { label: "QA & Test Automation (incl. AI/LLM testing)", href: "qa-test-automation.html" },
+      { label: "Custom Software Development", href: "custom-software-development" },
+      { label: "Web Application Development", href: "web-application-development" },
+      { label: "Mobile App Development", href: "mobile-app-development" },
+      { label: "Generative AI & LLM Apps", href: "generative-ai" },
+      { label: "Agentic AI & Intelligent Automation", href: "agentic-ai-automation" },
+      { label: "Data Engineering, Analytics & BI", href: "data-engineering-analytics" },
+      { label: "Cloud Services & Migration", href: "cloud-services" },
+      { label: "QA & Test Automation (incl. AI/LLM testing)", href: "qa-test-automation" },
     ],
-    more: { label: "Explore all IT services", href: "it-services.html" },
+    more: { label: "Explore all IT services", href: "it-services" },
   },
   {
     title: "Hiring Consultation",
-    href: "hiring-consultation.html",
+    href: "hiring-consultation",
     num: "10 services",
     body: "Permanent and contract hiring, staff augmentation, RPO, executive search, campus hiring and GCC setup, screened by practising engineers.",
     subs: [
-      { label: "All hiring services", href: "hiring-services.html" },
-      { label: "Permanent IT Recruitment", href: "permanent-it-recruitment.html" },
-      { label: "Contract Staffing & Contract-to-Hire", href: "contract-staffing.html" },
-      { label: "IT Staff Augmentation & Dedicated Teams", href: "staff-augmentation.html" },
-      { label: "GCC & India Team Setup Hiring", href: "gcc-hiring.html" },
-      { label: "Executive & Leadership Search", href: "executive-search.html" },
-      { label: "Recruitment Process Outsourcing (RPO)", href: "rpo.html" },
-      { label: "Roles we recruit", href: "technologies-roles-we-recruit.html" },
+      { label: "All hiring services", href: "hiring-services" },
+      { label: "Permanent IT Recruitment", href: "permanent-it-recruitment" },
+      { label: "Contract Staffing & Contract-to-Hire", href: "contract-staffing" },
+      { label: "IT Staff Augmentation & Dedicated Teams", href: "staff-augmentation" },
+      { label: "GCC & India Team Setup Hiring", href: "gcc-hiring" },
+      { label: "Executive & Leadership Search", href: "executive-search" },
+      { label: "Recruitment Process Outsourcing (RPO)", href: "rpo" },
+      { label: "Roles we recruit", href: "technologies-roles-we-recruit" },
     ],
-    more: { label: "Explore hiring services", href: "hiring-consultation.html" },
+    more: { label: "Explore hiring services", href: "hiring-consultation" },
   },
 ];
 
 export const TRAINING_DIVISION = {
   title: "Training",
-  href: "corporate-training.html",
+  href: "corporate-training",
   num: "18 tracks · 10 programmes",
   body: "Live, lab-based programmes: role-based upskilling for company teams, and faculty development plus student readiness for colleges.",
   groups: [
     {
       head: "For IT corporates",
-      href: "training-for-it-corporates.html",
+      href: "training-for-it-corporates",
       links: [
-        { label: "Generative AI & Agentic AI", href: "generative-ai-training.html" },
-        { label: "AI Productivity & AI Literacy for All Employees", href: "ai-literacy-training.html" },
-        { label: "AI/ML & MLOps", href: "machine-learning-mlops-training.html" },
-        { label: "Data Engineering & Lakehouse", href: "data-engineering-training.html" },
-        { label: "Data Analytics & BI (Power BI, Tableau)", href: "data-analytics-training.html" },
-        { label: "Cloud: AWS, Azure & Google Cloud", href: "cloud-training.html" },
+        { label: "Generative AI & Agentic AI", href: "generative-ai-training" },
+        { label: "AI Productivity & AI Literacy for All Employees", href: "ai-literacy-training" },
+        { label: "AI/ML & MLOps", href: "machine-learning-mlops-training" },
+        { label: "Data Engineering & Lakehouse", href: "data-engineering-training" },
+        { label: "Data Analytics & BI (Power BI, Tableau)", href: "data-analytics-training" },
+        { label: "Cloud: AWS, Azure & Google Cloud", href: "cloud-training" },
       ],
     },
     {
       head: "For institutes",
-      href: "training-for-institutes.html",
+      href: "training-for-institutes",
       links: [
-        { label: "Faculty Development Programmes (FDP) in AI, Cloud, Data & more", href: "faculty-development-programs.html" },
-        { label: "Industry-Readiness Bootcamp for Students", href: "industry-readiness-bootcamp.html" },
-        { label: "Placement Readiness Programme (aptitude, coding, interviews)", href: "placement-training.html" },
-        { label: "NEP-aligned Credit & Add-on Courses / Industry Minors", href: "nep-credit-courses.html" },
-        { label: "AI, GenAI & Data Science Certification Programme", href: "ai-data-certification-program.html" },
-        { label: "Cloud & DevOps Certification Programme", href: "cloud-devops-certification-program.html" },
+        { label: "Faculty Development Programmes (FDP) in AI, Cloud, Data & more", href: "faculty-development-programs" },
+        { label: "Industry-Readiness Bootcamp for Students", href: "industry-readiness-bootcamp" },
+        { label: "Placement Readiness Programme (aptitude, coding, interviews)", href: "placement-training" },
+        { label: "NEP-aligned Credit & Add-on Courses / Industry Minors", href: "nep-credit-courses" },
+        { label: "AI, GenAI & Data Science Certification Programme", href: "ai-data-certification-program" },
+        { label: "Cloud & DevOps Certification Programme", href: "cloud-devops-certification-program" },
       ],
     },
   ],
-  more: { label: "Explore training", href: "corporate-training.html" },
+  more: { label: "Explore training", href: "corporate-training" },
 };
 
 export const TECH_HEAD = {
@@ -151,12 +151,12 @@ export const TECH_MARQUEE = [
 ];
 
 export const TECH_CARDS = [
-  { title: "Agentic AI & MCP", href: "agentic-ai-automation.html", body: "Agents that act across CRM, ERP and ticketing through Model Context Protocol, with human approval on every consequential step." },
-  { title: "Testing AI systems", href: "qa-test-automation.html", body: "Eval suites, red-teaming and regression sets for LLM apps, run by a team that started in QA automation." },
-  { title: "The AI-ready lakehouse", href: "data-engineering-analytics.html", body: "Databricks, Snowflake and Microsoft Fabric builds that feed dashboards and retrieval pipelines from one governed store." },
-  { title: "Platform engineering", href: "devops-devsecops.html", body: "Internal developer platforms, GitOps and golden paths so teams ship safely every day." },
-  { title: "GCC & India team setup", href: "gcc-hiring.html", body: "Site leader first, then a foundation team, then scale: a phased hiring plan for a new India centre." },
-  { title: "AI skills for every team", href: "generative-ai-training.html", body: "AI literacy for all staff and GenAI engineering depth for developers, taught on your approved tools." },
+  { title: "Agentic AI & MCP", href: "agentic-ai-automation", body: "Agents that act across CRM, ERP and ticketing through Model Context Protocol, with human approval on every consequential step." },
+  { title: "Testing AI systems", href: "qa-test-automation", body: "Eval suites, red-teaming and regression sets for LLM apps, run by a team that started in QA automation." },
+  { title: "The AI-ready lakehouse", href: "data-engineering-analytics", body: "Databricks, Snowflake and Microsoft Fabric builds that feed dashboards and retrieval pipelines from one governed store." },
+  { title: "Platform engineering", href: "devops-devsecops", body: "Internal developer platforms, GitOps and golden paths so teams ship safely every day." },
+  { title: "GCC & India team setup", href: "gcc-hiring", body: "Site leader first, then a foundation team, then scale: a phased hiring plan for a new India centre." },
+  { title: "AI skills for every team", href: "generative-ai-training", body: "AI literacy for all staff and GenAI engineering depth for developers, taught on your approved tools." },
 ];
 
 export const SYNERGY_HEAD = {
@@ -181,14 +181,14 @@ export const ROLES_HEAD = {
 };
 
 export const ROLES = [
-  { title: "Java & JVM", small: "Java Developer, Senior Java Engineer, Spring Boot Microservices Developer", href: "technologies-roles-we-recruit.html#java-jvm" },
-  { title: ".NET & Microsoft", small: ".NET Developer, Senior C# Engineer, .NET Full-stack Developer (Angular/React)", href: "technologies-roles-we-recruit.html#dotnet-microsoft" },
-  { title: "Python, Go & Backend", small: "Python Developer, Django/FastAPI Engineer, Go (Golang) Developer", href: "technologies-roles-we-recruit.html#python-go-backend" },
-  { title: "JavaScript & Frontend", small: "Frontend Developer, React Developer, Angular Developer", href: "technologies-roles-we-recruit.html#javascript-frontend" },
-  { title: "Mobile", small: "iOS Developer, Android Developer, Flutter Developer", href: "technologies-roles-we-recruit.html#mobile" },
-  { title: "Cloud & Infrastructure", small: "Cloud Engineer, AWS Solutions Architect, Azure Cloud Engineer", href: "technologies-roles-we-recruit.html#cloud-infrastructure" },
-  { title: "DevOps, SRE & Platform", small: "DevOps Engineer, Site Reliability Engineer (SRE), Platform Engineer", href: "technologies-roles-we-recruit.html#devops-sre-platform" },
-  { title: "Data Engineering & Analytics", small: "Data Engineer, Big Data Engineer, Databricks Engineer", href: "technologies-roles-we-recruit.html#data-engineering-analytics" },
+  { title: "Java & JVM", small: "Java Developer, Senior Java Engineer, Spring Boot Microservices Developer", href: "technologies-roles-we-recruit#java-jvm" },
+  { title: ".NET & Microsoft", small: ".NET Developer, Senior C# Engineer, .NET Full-stack Developer (Angular/React)", href: "technologies-roles-we-recruit#dotnet-microsoft" },
+  { title: "Python, Go & Backend", small: "Python Developer, Django/FastAPI Engineer, Go (Golang) Developer", href: "technologies-roles-we-recruit#python-go-backend" },
+  { title: "JavaScript & Frontend", small: "Frontend Developer, React Developer, Angular Developer", href: "technologies-roles-we-recruit#javascript-frontend" },
+  { title: "Mobile", small: "iOS Developer, Android Developer, Flutter Developer", href: "technologies-roles-we-recruit#mobile" },
+  { title: "Cloud & Infrastructure", small: "Cloud Engineer, AWS Solutions Architect, Azure Cloud Engineer", href: "technologies-roles-we-recruit#cloud-infrastructure" },
+  { title: "DevOps, SRE & Platform", small: "DevOps Engineer, Site Reliability Engineer (SRE), Platform Engineer", href: "technologies-roles-we-recruit#devops-sre-platform" },
+  { title: "Data Engineering & Analytics", small: "Data Engineer, Big Data Engineer, Databricks Engineer", href: "technologies-roles-we-recruit#data-engineering-analytics" },
 ];
 
 export const WHY_HEAD = { title: "What working with us is like" };
@@ -216,7 +216,7 @@ export const CASES_HEAD = {
 
 export const CASES = [
   {
-    href: "genai-document-assistant-insurance.html",
+    href: "genai-document-assistant-insurance",
     pill: "IT Services",
     sector: "Insurance",
     title: "GenAI Document Assistant for an Insurance Agency Network",
@@ -228,7 +228,7 @@ export const CASES = [
     ],
   },
   {
-    href: "india-engineering-team-setup.html",
+    href: "india-engineering-team-setup",
     pill: "Hiring",
     sector: "Software products",
     title: "First 40 Hires for a US Product Company's India Engineering Team",
@@ -240,7 +240,7 @@ export const CASES = [
     ],
   },
   {
-    href: "genai-cloud-upskilling-program.html",
+    href: "genai-cloud-upskilling-program",
     pill: "Training",
     sector: "IT services and consulting",
     title: "GenAI and Cloud Upskilling for 120 Engineers",
@@ -269,9 +269,9 @@ export const INDUSTRIES = [
 export const POSTS_HEAD = { title: "Latest from the blog" };
 
 export const POSTS = [
-  { href: "nep-industry-courses-colleges.html", pill: "Training", meta: "29 Sep 2026 · 7 min read", title: "How Colleges Can Run Industry-Aligned Credit Courses Under NEP 2020", body: "NEP 2020 gives colleges room to offer skill-based and industry-aligned credit courses. Doing it well needs careful course design, outcome mapping, faculty involvement and honest expectations. This guide explains a practical approach for engineering and management institutions." },
-  { href: "corporate-ai-upskilling-plan.html", pill: "Training", meta: "8 Sep 2026 · 7 min read", title: "A 90-Day AI Upskilling Plan for IT Teams", body: "Most IT teams now use AI tools, but few have been trained to use them well. This 90-day plan sets out role-based tracks, hands-on practice, governance basics and measurement so that upskilling turns into better delivery, not just certificates." },
-  { href: "hire-train-deploy-model.html", pill: "Hiring", meta: "18 Aug 2026 · 7 min read", title: "Hire-Train-Deploy: Building Job-Ready Fresher Teams in 12 Weeks", body: "Campus hires bring energy and long-term value, but many need months of training before they contribute. A Hire-Train-Deploy model shortens that gap with structured selection, a role-specific curriculum and project-based assessment before deployment." },
+  { href: "nep-industry-courses-colleges", pill: "Training", meta: "29 Sep 2026 · 7 min read", title: "How Colleges Can Run Industry-Aligned Credit Courses Under NEP 2020", body: "NEP 2020 gives colleges room to offer skill-based and industry-aligned credit courses. Doing it well needs careful course design, outcome mapping, faculty involvement and honest expectations. This guide explains a practical approach for engineering and management institutions." },
+  { href: "corporate-ai-upskilling-plan", pill: "Training", meta: "8 Sep 2026 · 7 min read", title: "A 90-Day AI Upskilling Plan for IT Teams", body: "Most IT teams now use AI tools, but few have been trained to use them well. This 90-day plan sets out role-based tracks, hands-on practice, governance basics and measurement so that upskilling turns into better delivery, not just certificates." },
+  { href: "hire-train-deploy-model", pill: "Hiring", meta: "18 Aug 2026 · 7 min read", title: "Hire-Train-Deploy: Building Job-Ready Fresher Teams in 12 Weeks", body: "Campus hires bring energy and long-term value, but many need months of training before they contribute. A Hire-Train-Deploy model shortens that gap with structured selection, a role-specific curriculum and project-based assessment before deployment." },
 ];
 
 export const FAQS = [
@@ -304,7 +304,7 @@ export const FAQS = [
 export const CTA = {
   title: "Tell us what you need. We reply within one business day.",
   lede: "Share your requirement and we set up a free 30-minute call with the right specialist, then send a written proposal within 48 hours.",
-  primary: { label: "Book a free consultation", href: "contact.html" },
+  primary: { label: "Book a free consultation", href: "contact" },
   wa: "Hi Laprrk, I would like a free consultation.",
   contacts: [
     { small: "India · IST", label: "+91 88606 64929", href: "tel:+918860664929" },

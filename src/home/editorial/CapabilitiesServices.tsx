@@ -302,7 +302,7 @@ export function CapabilitiesServices() {
           </div>
 
           <div className="banner-right">
-            <a href="/contact.html" className="banner-cta-btn">
+            <a href="/contact" className="banner-cta-btn">
               <span>Discuss Your Requirements</span>
               <span aria-hidden="true">→</span>
             </a>

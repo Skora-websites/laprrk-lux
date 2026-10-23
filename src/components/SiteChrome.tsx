@@ -96,14 +96,14 @@ export function SiteDrawer({ open, onClose }: { open: boolean; onClose: () => vo
             </div>
           );
         })}
-        <a href="about.html" style={{ display: "block", fontFamily: '"Instrument Serif", Georgia, serif', fontSize: 30, fontWeight: 400, padding: "12px 0", borderBottom: "1px solid rgba(240,244,233,.14)", textDecoration: "none", color: "inherit" }}>
+        <a href="about" style={{ display: "block", fontFamily: '"Instrument Serif", Georgia, serif', fontSize: 30, fontWeight: 400, padding: "12px 0", borderBottom: "1px solid rgba(240,244,233,.14)", textDecoration: "none", color: "inherit" }}>
           About
         </a>
-        <a href="contact.html" style={{ display: "block", fontFamily: '"Instrument Serif", Georgia, serif', fontSize: 30, fontWeight: 400, padding: "12px 0", textDecoration: "none", color: "inherit" }}>
+        <a href="contact" style={{ display: "block", fontFamily: '"Instrument Serif", Georgia, serif', fontSize: 30, fontWeight: 400, padding: "12px 0", textDecoration: "none", color: "inherit" }}>
           Contact
         </a>
       </nav>
-      <a className="btn btn-gold" href="contact.html" style={{ marginTop: 26, width: "100%", justifyContent: "center" }}>
+      <a className="btn btn-gold" href="contact" style={{ marginTop: 26, width: "100%", justifyContent: "center" }}>
         Book a free consultation
       </a>
     </div>
@@ -123,7 +123,7 @@ export function SiteFooter() {
             <p style={{ maxWidth: "40ch", lineHeight: 1.6 }}>
               IT services, IT hiring consultation and corporate training, delivered from Greater Noida West, India and Louisville, Kentucky, USA.
             </p>
-            <a className="btn btn-gold" href="contact.html" style={{ justifySelf: "start" }}>
+            <a className="btn btn-gold" href="contact" style={{ justifySelf: "start" }}>
               Book a free consultation
             </a>
           </div>
@@ -169,8 +169,8 @@ export function SiteFooter() {
         <div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", gap: 14, marginTop: 40, paddingTop: 24, borderTop: "1px solid var(--line)", fontSize: 13.5 }}>
           <span>&copy; <span id="year">2026</span> Laprrk Technology Solutions LLP. GSTIN 09AAHFL0399D1ZU. MSME registered.</span>
           <nav aria-label="Legal" style={{ display: "flex", gap: 18, flexWrap: "wrap" }}>
-            <a href="privacy-policy.html" style={{ color: "inherit", textDecoration: "none" }}>Privacy</a>
-            <a href="terms.html" style={{ color: "inherit", textDecoration: "none" }}>Terms</a>
+            <a href="privacy-policy" style={{ color: "inherit", textDecoration: "none" }}>Privacy</a>
+            <a href="terms" style={{ color: "inherit", textDecoration: "none" }}>Terms</a>
             <a href="sitemap.xml" style={{ color: "inherit", textDecoration: "none" }}>Sitemap</a>
           </nav>
         </div>

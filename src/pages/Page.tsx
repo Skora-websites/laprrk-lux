@@ -58,7 +58,7 @@ function SubpageScopeProtocolCard({ slug }: { slug: string }) {
           </span>
         </div>
         <div style={{ marginTop: 24, paddingTop: 18, borderTop: "1px solid rgba(255,255,255,0.1)" }}>
-          <a href="/contact.html" style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#B8C7E0", fontSize: "0.8125rem", fontWeight: 600, textDecoration: "none" }}>
+          <a href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#B8C7E0", fontSize: "0.8125rem", fontWeight: 600, textDecoration: "none" }}>
             <span>Schedule AI architecture consultation</span>
             <span aria-hidden="true">→</span>
           </a>
@@ -104,7 +104,7 @@ function SubpageScopeProtocolCard({ slug }: { slug: string }) {
           </span>
         </div>
         <div style={{ marginTop: 24, paddingTop: 18, borderTop: "1px solid rgba(255,255,255,0.1)" }}>
-          <a href="/contact.html" style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#B8C7E0", fontSize: "0.8125rem", fontWeight: 600, textDecoration: "none" }}>
+          <a href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#B8C7E0", fontSize: "0.8125rem", fontWeight: 600, textDecoration: "none" }}>
             <span>Review cloud architecture &amp; runbooks</span>
             <span aria-hidden="true">→</span>
           </a>
@@ -150,7 +150,7 @@ function SubpageScopeProtocolCard({ slug }: { slug: string }) {
           </span>
         </div>
         <div style={{ marginTop: 24, paddingTop: 18, borderTop: "1px solid rgba(255,255,255,0.1)" }}>
-          <a href="/contact.html" style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#B8C7E0", fontSize: "0.8125rem", fontWeight: 600, textDecoration: "none" }}>
+          <a href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#B8C7E0", fontSize: "0.8125rem", fontWeight: 600, textDecoration: "none" }}>
             <span>Book security &amp; compliance review</span>
             <span aria-hidden="true">→</span>
           </a>
@@ -196,7 +196,7 @@ function SubpageScopeProtocolCard({ slug }: { slug: string }) {
           </span>
         </div>
         <div style={{ marginTop: 24, paddingTop: 18, borderTop: "1px solid rgba(255,255,255,0.1)" }}>
-          <a href="/contact.html" style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#B8C7E0", fontSize: "0.8125rem", fontWeight: 600, textDecoration: "none" }}>
+          <a href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#B8C7E0", fontSize: "0.8125rem", fontWeight: 600, textDecoration: "none" }}>
             <span>Explore test automation framework</span>
             <span aria-hidden="true">→</span>
           </a>
@@ -249,7 +249,7 @@ function SubpageScopeProtocolCard({ slug }: { slug: string }) {
           </span>
         </div>
         <div style={{ marginTop: 24, paddingTop: 18, borderTop: "1px solid rgba(255,255,255,0.1)" }}>
-          <a href="/contact.html" style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#B8C7E0", fontSize: "0.8125rem", fontWeight: 600, textDecoration: "none" }}>
+          <a href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#B8C7E0", fontSize: "0.8125rem", fontWeight: 600, textDecoration: "none" }}>
             <span>Calibrate a role with our engineers</span>
             <span aria-hidden="true">→</span>
           </a>
@@ -302,7 +302,7 @@ function SubpageScopeProtocolCard({ slug }: { slug: string }) {
           </span>
         </div>
         <div style={{ marginTop: 24, paddingTop: 18, borderTop: "1px solid rgba(255,255,255,0.1)" }}>
-          <a href="/contact.html" style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#B8C7E0", fontSize: "0.8125rem", fontWeight: 600, textDecoration: "none" }}>
+          <a href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#B8C7E0", fontSize: "0.8125rem", fontWeight: 600, textDecoration: "none" }}>
             <span>Review curriculum &amp; sample labs</span>
             <span aria-hidden="true">→</span>
           </a>
@@ -347,7 +347,7 @@ function SubpageScopeProtocolCard({ slug }: { slug: string }) {
         </span>
       </div>
       <div style={{ marginTop: 24, paddingTop: 18, borderTop: "1px solid rgba(255,255,255,0.1)" }}>
-        <a href="/contact.html" style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#B8C7E0", fontSize: "0.8125rem", fontWeight: 600, textDecoration: "none" }}>
+        <a href="/contact" style={{ display: "inline-flex", alignItems: "center", gap: 8, color: "#B8C7E0", fontSize: "0.8125rem", fontWeight: 600, textDecoration: "none" }}>
           <span>Schedule scoping review</span>
           <span aria-hidden="true">→</span>
         </a>
@@ -644,13 +644,13 @@ export function Page({ data }: { data: PageData }) {
                 <p className="subpage-lede">{data.lede}</p>
 
                 <div className="subpage-actions">
-                  <a className="subpage-btn-primary" href="/contact.html">
+                  <a className="subpage-btn-primary" href="/contact">
                     <span>Book a Consultation</span>
                     <span aria-hidden="true">→</span>
                   </a>
                   <a
                     className="subpage-btn-secondary"
-                    href={data.secondaryHref ?? "/contact.html"}
+                    href={data.secondaryHref ?? "/contact"}
                   >
                     <span>{data.secondaryLabel ?? "Discuss Requirements"}</span>
                   </a>
@@ -725,7 +725,7 @@ export function Page({ data }: { data: PageData }) {
                             <p className="subpage-scope-body">{it.body}</p>
                             <a
                               className="subpage-scope-link"
-                              href={data.secondaryHref ?? "/contact.html"}
+                              href={data.secondaryHref ?? "/contact"}
                             >
                               <span>Consult on this scope</span>
                               <span aria-hidden="true">→</span>

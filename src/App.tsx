@@ -121,9 +121,9 @@ function ClientNavigationInterceptor({ children }: { children: React.ReactNode }
         return;
       }
 
-      // Case 3: Link to a subpage with or without hash (e.g. "/devops-devsecops.html" or "technologies-roles-we-recruit.html#java-jvm")
+      // Case 3: Link to a subpage with or without hash (e.g. "/devops-devsecops" or "technologies-roles-we-recruit#java-jvm")
       e.preventDefault();
-      const targetUrl = `/${clean}.html${hash ? '#' + hash : ''}`;
+      const targetUrl = `/${clean}${hash ? '#' + hash : ''}`;
       navigate(targetUrl);
       if (hash) {
         setTimeout(() => {
@@ -163,7 +163,6 @@ export function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/index.html" element={<Navigate to="/" replace />} />
-          <Route path="/:slug.html" element={<SubpageRenderer />} />
           <Route path="/:slug" element={<SubpageRenderer />} />
           <Route path="*" element={<HomePage />} />
         </Routes>

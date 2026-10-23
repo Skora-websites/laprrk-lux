@@ -283,7 +283,7 @@ export function Steps() {
     <section className="section lux-pad" aria-label="How we work" style={{ position: "relative", overflow: "hidden" }}>
       <SectionBackdrop variant="cases" opacity={0.14} blur={40} />
       <div className="container" style={{ position: "relative", zIndex: 1 }}>
-        <SectionHead title="Not sure where to start? We make it simple." link={{ label: "Book a free consultation", href: "contact.html" }} />
+        <SectionHead title="Not sure where to start? We make it simple." link={{ label: "Book a free consultation", href: "contact" }} />
         
         {/* Horizontal Milestone Horizon (ZERO cards) */}
         <div className="steps-timeline-horizon">

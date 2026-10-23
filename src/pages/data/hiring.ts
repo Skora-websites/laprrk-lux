@@ -1,6 +1,6 @@
 import type { PageData } from "./types";
 
-const BOOK = { label: "Book a free consultation", href: "contact.html" };
+const BOOK = { label: "Book a free consultation", href: "contact" };
 
 export const HIRING_PAGES: Record<string, PageData> = {
   "hiring-consultation": {
@@ -10,7 +10,7 @@ export const HIRING_PAGES: Record<string, PageData> = {
     eyebrow: "Hiring overview",
     lede: "Permanent and contract hiring, staff augmentation, RPO, executive search, campus hiring and GCC team setup in India and the USA. Screened shortlists in 5-7 business days.",
     secondaryLabel: "See roles we recruit",
-    secondaryHref: "technologies-roles-we-recruit.html",
+    secondaryHref: "technologies-roles-we-recruit",
     blocks: [
       {
         kind: "scope",
@@ -46,9 +46,9 @@ export const HIRING_PAGES: Record<string, PageData> = {
       },
     ],
     related: [
-      { label: "All hiring services", href: "hiring-services.html" },
-      { label: "GCC & India Team Setup", href: "gcc-hiring.html" },
-      { label: "Hire-Train-Deploy", href: "campus-hiring.html" },
+      { label: "All hiring services", href: "hiring-services" },
+      { label: "GCC & India Team Setup", href: "gcc-hiring" },
+      { label: "Hire-Train-Deploy", href: "campus-hiring" },
       BOOK,
     ],
   },
@@ -80,9 +80,9 @@ export const HIRING_PAGES: Record<string, PageData> = {
       },
     ],
     related: [
-      { label: "Hiring Consultation", href: "hiring-consultation.html" },
-      { label: "Permanent IT Recruitment", href: "permanent-it-recruitment.html" },
-      { label: "RPO", href: "rpo.html" },
+      { label: "Hiring Consultation", href: "hiring-consultation" },
+      { label: "Permanent IT Recruitment", href: "permanent-it-recruitment" },
+      { label: "RPO", href: "rpo" },
       BOOK,
     ],
   },
@@ -114,9 +114,9 @@ export const HIRING_PAGES: Record<string, PageData> = {
       },
     ],
     related: [
-      { label: "Roles we recruit", href: "technologies-roles-we-recruit.html" },
-      { label: "Contract Staffing", href: "contract-staffing.html" },
-      { label: "Executive Search", href: "executive-search.html" },
+      { label: "Roles we recruit", href: "technologies-roles-we-recruit" },
+      { label: "Contract Staffing", href: "contract-staffing" },
+      { label: "Executive Search", href: "executive-search" },
       BOOK,
     ],
   },
@@ -148,9 +148,9 @@ export const HIRING_PAGES: Record<string, PageData> = {
       },
     ],
     related: [
-      { label: "Staff Augmentation", href: "staff-augmentation.html" },
-      { label: "US IT Staffing", href: "us-it-staffing.html" },
-      { label: "Permanent Recruitment", href: "permanent-it-recruitment.html" },
+      { label: "Staff Augmentation", href: "staff-augmentation" },
+      { label: "US IT Staffing", href: "us-it-staffing" },
+      { label: "Permanent Recruitment", href: "permanent-it-recruitment" },
       BOOK,
     ],
   },
@@ -182,9 +182,9 @@ export const HIRING_PAGES: Record<string, PageData> = {
       },
     ],
     related: [
-      { label: "Contract Staffing", href: "contract-staffing.html" },
-      { label: "IT Services", href: "it-services.html" },
-      { label: "RPO", href: "rpo.html" },
+      { label: "Contract Staffing", href: "contract-staffing" },
+      { label: "IT Services", href: "it-services" },
+      { label: "RPO", href: "rpo" },
       BOOK,
     ],
   },
@@ -226,9 +226,9 @@ export const HIRING_PAGES: Record<string, PageData> = {
       },
     ],
     related: [
-      { label: "Full case study", href: "india-engineering-team-setup.html" },
-      { label: "Executive Search", href: "executive-search.html" },
-      { label: "Hire-Train-Deploy", href: "campus-hiring.html" },
+      { label: "Full case study", href: "india-engineering-team-setup" },
+      { label: "Executive Search", href: "executive-search" },
+      { label: "Hire-Train-Deploy", href: "campus-hiring" },
       BOOK,
     ],
   },
@@ -260,9 +260,9 @@ export const HIRING_PAGES: Record<string, PageData> = {
       },
     ],
     related: [
-      { label: "GCC Hiring", href: "gcc-hiring.html" },
-      { label: "Permanent Recruitment", href: "permanent-it-recruitment.html" },
-      { label: "RPO", href: "rpo.html" },
+      { label: "GCC Hiring", href: "gcc-hiring" },
+      { label: "Permanent Recruitment", href: "permanent-it-recruitment" },
+      { label: "RPO", href: "rpo" },
       BOOK,
     ],
   },
@@ -294,9 +294,9 @@ export const HIRING_PAGES: Record<string, PageData> = {
       },
     ],
     related: [
-      { label: "Staff Augmentation", href: "staff-augmentation.html" },
-      { label: "Campus Hiring", href: "campus-hiring.html" },
-      { label: "Technical Assessment", href: "technical-assessment.html" },
+      { label: "Staff Augmentation", href: "staff-augmentation" },
+      { label: "Campus Hiring", href: "campus-hiring" },
+      { label: "Technical Assessment", href: "technical-assessment" },
       BOOK,
     ],
   },
@@ -328,9 +328,9 @@ export const HIRING_PAGES: Record<string, PageData> = {
       },
     ],
     related: [
-      { label: "Full model explained", href: "hire-train-deploy-model.html" },
-      { label: "Placement Training", href: "placement-training.html" },
-      { label: "Bootcamps", href: "industry-readiness-bootcamp.html" },
+      { label: "Full model explained", href: "hire-train-deploy-model" },
+      { label: "Placement Training", href: "placement-training" },
+      { label: "Bootcamps", href: "industry-readiness-bootcamp" },
       BOOK,
     ],
   },
@@ -362,9 +362,9 @@ export const HIRING_PAGES: Record<string, PageData> = {
       },
     ],
     related: [
-      { label: "Contract Staffing", href: "contract-staffing.html" },
-      { label: "GCC Hiring", href: "gcc-hiring.html" },
-      { label: "Contact & offices", href: "contact.html" },
+      { label: "Contract Staffing", href: "contract-staffing" },
+      { label: "GCC Hiring", href: "gcc-hiring" },
+      { label: "Contact & offices", href: "contact" },
       BOOK,
     ],
   },
@@ -396,9 +396,9 @@ export const HIRING_PAGES: Record<string, PageData> = {
       },
     ],
     related: [
-      { label: "Permanent Recruitment", href: "permanent-it-recruitment.html" },
-      { label: "Roles we recruit", href: "technologies-roles-we-recruit.html" },
-      { label: "RPO", href: "rpo.html" },
+      { label: "Permanent Recruitment", href: "permanent-it-recruitment" },
+      { label: "Roles we recruit", href: "technologies-roles-we-recruit" },
+      { label: "RPO", href: "rpo" },
       BOOK,
     ],
   },
@@ -429,9 +429,9 @@ export const HIRING_PAGES: Record<string, PageData> = {
       },
     ],
     related: [
-      { label: "Campus Hiring", href: "campus-hiring.html" },
-      { label: "Permanent Recruitment", href: "permanent-it-recruitment.html" },
-      { label: "RPO", href: "rpo.html" },
+      { label: "Campus Hiring", href: "campus-hiring" },
+      { label: "Permanent Recruitment", href: "permanent-it-recruitment" },
+      { label: "RPO", href: "rpo" },
       BOOK,
     ],
   },
@@ -475,9 +475,9 @@ export const HIRING_PAGES: Record<string, PageData> = {
       },
     ],
     related: [
-      { label: "Permanent Recruitment", href: "permanent-it-recruitment.html" },
-      { label: "Technical Assessment", href: "technical-assessment.html" },
-      { label: "Hire-Train-Deploy", href: "campus-hiring.html" },
+      { label: "Permanent Recruitment", href: "permanent-it-recruitment" },
+      { label: "Technical Assessment", href: "technical-assessment" },
+      { label: "Hire-Train-Deploy", href: "campus-hiring" },
       BOOK,
     ],
   },

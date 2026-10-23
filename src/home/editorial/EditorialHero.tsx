@@ -45,7 +45,7 @@ export function EditorialHero() {
                 <span className="arrow" aria-hidden="true">↓</span>
               </a>
 
-              <a href="/contact.html" className="reference-btn-secondary">
+              <a href="/contact" className="reference-btn-secondary">
                 <span>Discuss Your Requirements</span>
               </a>
             </div>

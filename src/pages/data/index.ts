@@ -23,9 +23,9 @@ export function getPage(slug: string): PageData {
     lede: "Talk to us about this requirement and we will respond with a written proposal.",
     blocks: [],
     related: [
-      { label: "IT Services", href: "it-services.html" },
-      { label: "Hiring Consultation", href: "hiring-consultation.html" },
-      { label: "Corporate Training", href: "corporate-training.html" },
+      { label: "IT Services", href: "it-services" },
+      { label: "Hiring Consultation", href: "hiring-consultation" },
+      { label: "Corporate Training", href: "corporate-training" },
     ],
   };
 }

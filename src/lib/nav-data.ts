@@ -240,7 +240,7 @@ export const FOOTER_COLS = [
       { label: "Case studies", href: "case-studies.html" },
       { label: "FAQs", href: "faq.html" },
       { label: "About Laprrk", href: "about.html" },
-      { label: "Contact & offices", href: "contact.html" },
+      { label: "Contact & offices", href: "contact" },
     ],
   },
 ];

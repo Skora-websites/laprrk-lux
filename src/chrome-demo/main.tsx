@@ -36,8 +36,8 @@ export default function ChromeDemo() {
                 resize below 1080px for the drawer. Footer clocks and WhatsApp pill are live.
               </p>
               <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-                <a className="btn btn-gold" href="contact.html">Book a free consultation</a>
-                <a className="btn btn-ghost" href="it-services.html">Explore services</a>
+                <a className="btn btn-gold" href="contact">Book a free consultation</a>
+                <a className="btn btn-ghost" href="it-services">Explore services</a>
               </div>
             </div>
           </Reveal>

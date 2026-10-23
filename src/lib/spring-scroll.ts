@@ -1,4 +1,4 @@
-import { gsap, ScrollTrigger } from "../lib/motion";
+import { gsap, ScrollTrigger } from "./motion";
 
 /* Spring smooth scrolling, ported from the reference site's Springer easing
    (stiffness 0.2, damping 0.8) driving native window scroll.

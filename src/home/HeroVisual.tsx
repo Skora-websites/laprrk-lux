@@ -159,7 +159,7 @@ export function HeroVisual() {
               </li>
             ))}
           </ul>
-          <a className="hv-foot" href="contact.html">
+          <a className="hv-foot" href="contact">
             <span>India delivery · USA hours</span>
             <span className="mono">IST + ET overlap</span>
           </a>
