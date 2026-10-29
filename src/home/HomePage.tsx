@@ -1,5 +1,6 @@
 import { EditorialHeader } from "./editorial/EditorialHeader";
 import { EditorialHero } from "./editorial/EditorialHero";
+import { EnterpriseTrustStrip } from "./editorial/EnterpriseTrustStrip";
 import { BusinessIntroduction } from "./editorial/BusinessIntroduction";
 import { CapabilitiesServices } from "./editorial/CapabilitiesServices";
 import { HowWeWork } from "./editorial/HowWeWork";
@@ -12,15 +13,18 @@ import { EditorialFooter } from "./editorial/EditorialFooter";
 
 export function HomePage() {
   return (
-    <div className="editorial-site-wrapper" style={{ minHeight: "100vh", backgroundColor: "var(--surf-warm-ivory)" }}>
+    <div className="editorial-site-wrapper" style={{ minHeight: "100vh", backgroundColor: "#FFFFFF" }}>
       {/* SECTION A — HEADER */}
       <EditorialHeader />
 
       <main id="main">
-        {/* SECTION B — HERO (Warm Ivory) */}
+        {/* SECTION B — HERO */}
         <EditorialHero />
 
-        {/* SECTION C — BUSINESS INTRODUCTION (Warm Stone) */}
+        {/* SECTION B.2 — ENTERPRISE TRUST STRIP & ECOSYSTEM MARQUEE */}
+        <EnterpriseTrustStrip />
+
+        {/* SECTION C — BUSINESS INTRODUCTION */}
         <BusinessIntroduction />
 
         {/* SECTION D — SERVICES (Mist Sage) */}
@@ -64,13 +68,13 @@ export function HomePage() {
           gap: 10,
           padding: "10px 16px",
           borderRadius: 999,
-          backgroundColor: "#202D3A",
-          color: "#F0EEE7",
-          border: "1px solid rgba(240, 238, 231, 0.2)",
+          backgroundColor: "#007CC3",
+          color: "#FFFFFF",
+          border: "1px solid rgba(255, 255, 255, 0.2)",
           textDecoration: "none",
           fontSize: "0.8125rem",
           fontWeight: 600,
-          boxShadow: "0 8px 24px rgba(32, 45, 58, 0.2)",
+          boxShadow: "0 8px 24px rgba(0, 124, 195, 0.35)",
           transition: "transform 0.2s ease, background-color 0.2s ease",
         }}
       >

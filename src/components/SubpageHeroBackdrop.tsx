@@ -228,8 +228,8 @@ export function SubpageHeroBackdrop() {
         const causticGrad = ctx.createRadialGradient(cx, cy, 30, cx, cy, gemScale * 2.8);
         causticGrad.addColorStop(0, "rgba(192, 236, 217, 0.42)");
         causticGrad.addColorStop(0.45, "rgba(160, 222, 235, 0.22)");
-        causticGrad.addColorStop(0.8, "rgba(14, 122, 95, 0.08)");
-        causticGrad.addColorStop(1, "rgba(14, 122, 95, 0)");
+        causticGrad.addColorStop(0.8, "rgba(0, 124, 195, 0.08)");
+        causticGrad.addColorStop(1, "rgba(0, 124, 195, 0)");
         ctx.fillStyle = causticGrad;
         ctx.beginPath();
         ctx.arc(cx, cy, gemScale * 2.8, 0, Math.PI * 2);
@@ -247,7 +247,7 @@ export function SubpageHeroBackdrop() {
         // Draw cross lines in depth (Z direction)
         for (let c = 0; c < meshCols; c += 2) {
           ctx.beginPath();
-          ctx.strokeStyle = "rgba(14, 122, 95, 0.055)";
+          ctx.strokeStyle = "rgba(0, 124, 195, 0.055)";
           ctx.lineWidth = 0.8;
           for (let r = 0; r < meshRows; r++) {
             const wx = startX + c * meshSpacingX;
@@ -266,7 +266,7 @@ export function SubpageHeroBackdrop() {
         for (let r = 0; r < meshRows; r++) {
           ctx.beginPath();
           const rowAlpha = 0.05 + (1 - r / meshRows) * 0.12;
-          ctx.strokeStyle = `rgba(14, 122, 95, ${rowAlpha})`;
+          ctx.strokeStyle = `rgba(0, 124, 195, ${rowAlpha})`;
           ctx.lineWidth = r === 0 ? 1.4 : 0.9;
 
           for (let c = 0; c < meshCols; c++) {
@@ -282,7 +282,7 @@ export function SubpageHeroBackdrop() {
 
             // Pulsing luminous nodes at wave crests
             if (waveY > 10 && r % 3 === 0 && c % 4 === 0) {
-              ctx.fillStyle = "#0e7a5f";
+              ctx.fillStyle = "#007CC3";
               ctx.beginPath();
               ctx.arc(sx, sy, 2 * sc, 0, Math.PI * 2);
               ctx.fill();
@@ -336,7 +336,7 @@ export function SubpageHeroBackdrop() {
         };
 
         // Ring 1: Equatorial with engineering degree ticks
-        draw3DRing(gemScale * 1.55, 0.35 + Math.sin(time * 0.3) * 0.1, "rgba(14, 122, 95, 0.32)", [5, 4], true);
+        draw3DRing(gemScale * 1.55, 0.35 + Math.sin(time * 0.3) * 0.1, "rgba(0, 124, 195, 0.32)", [5, 4], true);
         // Ring 2: Tilted Cyan Gyroscope track
         draw3DRing(gemScale * 1.88, -0.65 + Math.cos(time * 0.25) * 0.15, "rgba(56, 189, 248, 0.28)", [2, 6]);
         // Ring 3: Outer Polar Mint halo
@@ -355,7 +355,7 @@ export function SubpageHeroBackdrop() {
 
           ctx.beginPath();
           ctx.arc(np.x, np.y, 4.2 * np.scale, 0, Math.PI * 2);
-          ctx.fillStyle = i % 2 === 0 ? "#0e7a5f" : "#10b981";
+          ctx.fillStyle = i % 2 === 0 ? "#007CC3" : "#10b981";
           ctx.shadowColor = "rgba(192, 236, 217, 0.9)";
           ctx.shadowBlur = 10;
           ctx.fill();
@@ -370,7 +370,7 @@ export function SubpageHeroBackdrop() {
           ctx.beginPath();
           ctx.moveTo(np.x, np.y);
           ctx.lineTo(tp.x, tp.y);
-          ctx.strokeStyle = "rgba(14, 122, 95, 0.35)";
+          ctx.strokeStyle = "rgba(0, 124, 195, 0.35)";
           ctx.lineWidth = 1.5;
           ctx.stroke();
         }
@@ -392,9 +392,9 @@ export function SubpageHeroBackdrop() {
             ctx.lineTo(p2.x, p2.y);
             ctx.lineTo(p3.x, p3.y);
             ctx.closePath();
-            ctx.fillStyle = "rgba(14, 122, 95, 0.16)";
+            ctx.fillStyle = "rgba(0, 124, 195, 0.16)";
             ctx.fill();
-            ctx.strokeStyle = "rgba(14, 122, 95, 0.4)";
+            ctx.strokeStyle = "rgba(0, 124, 195, 0.4)";
             ctx.lineWidth = 1;
             ctx.stroke();
           }
@@ -435,12 +435,12 @@ export function SubpageHeroBackdrop() {
             const grad = ctx.createLinearGradient(p1.x, p1.y, p3.x, p3.y);
             grad.addColorStop(0, `rgba(192, 236, 217, ${0.18 + lightNorm * 0.42})`);
             grad.addColorStop(0.48, `rgba(160, 222, 235, ${0.14 + lightNorm * 0.35})`);
-            grad.addColorStop(1, `rgba(14, 122, 95, ${0.1 + lightNorm * 0.28})`);
+            grad.addColorStop(1, `rgba(0, 124, 195, ${0.1 + lightNorm * 0.28})`);
             ctx.fillStyle = grad;
             ctx.fill();
 
             // Primary Emerald Edge
-            ctx.strokeStyle = `rgba(14, 122, 95, ${0.3 + lightNorm * 0.6})`;
+            ctx.strokeStyle = `rgba(0, 124, 195, ${0.3 + lightNorm * 0.6})`;
             ctx.lineWidth = 1.3;
             ctx.stroke();
 
@@ -454,7 +454,7 @@ export function SubpageHeroBackdrop() {
               ctx.beginPath();
               ctx.arc(p1.x, p1.y, 4, 0, Math.PI * 2);
               ctx.fillStyle = "#ffffff";
-              ctx.shadowColor = "#c0ecd9";
+              ctx.shadowColor = "#BAE0F7";
               ctx.shadowBlur = 14;
               ctx.fill();
               ctx.shadowBlur = 0;
@@ -481,7 +481,7 @@ export function SubpageHeroBackdrop() {
           // Target reticle ring on 3D vertex
           ctx.beginPath();
           ctx.arc(lx1, ly1, 5, 0, Math.PI * 2);
-          ctx.strokeStyle = "#0e7a5f";
+          ctx.strokeStyle = "#007CC3";
           ctx.lineWidth = 1.4;
           ctx.stroke();
 
@@ -490,14 +490,14 @@ export function SubpageHeroBackdrop() {
           ctx.moveTo(lx1, ly1);
           ctx.lineTo(lx2, ly2);
           ctx.lineTo(lx3, ly2);
-          ctx.strokeStyle = "rgba(14, 122, 95, 0.45)";
+          ctx.strokeStyle = "rgba(0, 124, 195, 0.45)";
           ctx.lineWidth = 1;
           ctx.stroke();
 
           // Floating Micro-Badge on Canvas
           ctx.fillStyle = "rgba(255, 255, 255, 0.9)";
           ctx.fillRect(lx2, ly2 - 16, 95, 14);
-          ctx.strokeStyle = "rgba(14, 122, 95, 0.25)";
+          ctx.strokeStyle = "rgba(0, 124, 195, 0.25)";
           ctx.strokeRect(lx2, ly2 - 16, 95, 14);
 
           ctx.font = "8.5px 'JetBrains Mono', monospace";

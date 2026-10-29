@@ -60,7 +60,7 @@ export function ThemeToggle({ className = "", compact = false }: { className?: s
           : "linear-gradient(135deg, rgba(235, 246, 241, 0.95), rgba(215, 236, 227, 0.95))",
         border: isDark
           ? "1px solid rgba(192, 236, 217, 0.35)"
-          : "1px solid rgba(14, 122, 95, 0.25)",
+          : "1px solid rgba(0, 124, 195, 0.25)",
         boxShadow: isDark
           ? "0 4px 14px rgba(0, 0, 0, 0.5), inset 0 1px 2px rgba(255, 255, 255, 0.1), 0 0 10px rgba(192, 236, 217, 0.2)"
           : "0 2px 10px rgba(2, 25, 36, 0.08), inset 0 1px 2px rgba(255, 255, 255, 0.8)",
@@ -101,7 +101,7 @@ export function ThemeToggle({ className = "", compact = false }: { className?: s
           justifyContent: "center",
           width: compact ? 20 : 24,
           height: compact ? 20 : 24,
-          color: isDark ? "#c0ecd9" : "rgba(14, 122, 95, 0.4)",
+          color: isDark ? "#c0ecd9" : "rgba(0, 124, 195, 0.4)",
           transition: "color 0.3s ease, transform 0.3s ease",
           transform: isDark ? "scale(1.05)" : "scale(0.85)",
           zIndex: 1,
@@ -123,7 +123,7 @@ export function ThemeToggle({ className = "", compact = false }: { className?: s
           height: compact ? 22 : 26,
           borderRadius: "50%",
           background: isDark
-            ? "linear-gradient(135deg, #34d399 0%, #0e7a5f 100%)"
+            ? "linear-gradient(135deg, #34d399 0%, #007CC3 100%)"
             : "linear-gradient(135deg, #ffffff 0%, #e6f4ee 100%)",
           boxShadow: isDark
             ? "0 2px 10px rgba(52, 211, 153, 0.6), inset 0 1px 1px rgba(255, 255, 255, 0.6)"

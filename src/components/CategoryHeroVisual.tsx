@@ -596,7 +596,7 @@ export function CategoryHeroVisual({ data }: { data: PageData }) {
               </g>
 
               <g transform="translate(18, 195)">
-                <rect x="0" y="0" width="190" height="42" rx="4" fill="#EAE5DB" border="1px solid rgba(32,45,58,0.2)" />
+                <rect x="0" y="0" width="190" height="42" rx="4" fill="#EAE5DB" stroke="rgba(32,45,58,0.2)" strokeWidth="1" />
                 <text x="12" y="25" fontFamily="Space Grotesk, sans-serif" fontSize="9" fontWeight="700" fill="#202D3A">88% JOIN RATIO · SUCCESS FEE ONLY</text>
               </g>
             </g>

@@ -1229,7 +1229,7 @@ const CSS = `
 .sh-aside{max-width:58ch;width:100%;justify-self:start;padding-bottom:0;margin:0}
 .sh-body{font-family:var(--sh-body);font-size:clamp(16px,1.6vw,19px);line-height:1.6;letter-spacing:-.01em;margin:0 0 20px;opacity:1;color:#3e5b69;text-wrap:pretty}
 .sh-ctas{display:flex;flex-wrap:wrap;align-items:center;gap:14px}
-.sh-btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 24px;border-radius:999px;background:linear-gradient(135deg, #0e7a5f 0%, #085641 100%);
+.sh-btn{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 24px;border-radius:999px;background:linear-gradient(135deg, #007CC3 0%, #085641 100%);
   color:#ffffff !important;text-decoration:none;font-family:"Manrope",sans-serif;font-size:14.5px;font-weight:600;letter-spacing:-.01em;
   box-shadow:0 6px 18px -4px rgba(14,122,95,.35);transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s ease}
 .sh-btn:hover{transform:translateY(-2px);box-shadow:0 10px 24px -4px rgba(14,122,95,.45)}

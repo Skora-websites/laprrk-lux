@@ -23,99 +23,104 @@ export function CapabilitiesServices() {
     {
       id: "tech-solutions",
       index: "01",
-      title: "Technology Solutions",
-      category: "TECHNOLOGY SOLUTIONS",
+      title: "Digital Engineering & Applied AI",
+      category: "ENTERPRISE DIGITAL SYSTEMS",
       summary:
-        "Full-cycle product engineering, generative AI systems, modern cloud infrastructure, and enterprise QA automation. We work in disciplined two-week sprint cadences with demonstrable working software produced each cycle.",
+        "Mission-critical enterprise application development, agentic AI co-pilots, distributed cloud-native modernization, and autonomous test engineering. We deliver in disciplined two-week sprint cadences with demonstrable working software produced each cycle.",
       link: { label: "Explore Technology Services", href: "/it-services.html" },
       tags: [
         { label: "Custom Software", href: "/custom-software-development.html" },
-        { label: "Generative AI", href: "/generative-ai.html" },
+        { label: "Generative AI & LLMs", href: "/generative-ai.html" },
+        { label: "Agentic Automation", href: "/agentic-ai-automation.html" },
         { label: "Cloud & DevOps", href: "/cloud-services.html" },
+        { label: "Data Engineering", href: "/data-engineering-analytics.html" },
         { label: "QA Automation", href: "/qa-test-automation.html" },
       ],
       imageSrc: "/assets/img/subpage-ai-systems.jpg",
-      badgeLabel: "01 // TECHNOLOGY SOLUTIONS",
+      badgeLabel: "01 // DIGITAL ENGINEERING & AI",
       leaderLines: [
-        "PRODUCT ENGINEERING",
-        "GENAI & AUTOMATION",
-        "CLOUD & DEVOPS",
-        "QA & TESTING",
+        "DISTRIBUTED MICROSERVICES",
+        "AGENTIC AI PIPELINES",
+        "CLOUD & DEVOPS AUTOMATION",
+        "CONTINUOUS COMPLIANCE",
       ],
       outcomesTitle: "BUSINESS OUTCOMES",
-      outcomes: ["Faster innovation", "Stronger teams", "Measurable capability"],
+      outcomes: ["40% Faster Time-to-Market", "99.95% Availability", "Zero Vendor Lock-in"],
     },
     {
       id: "talent-acquisition",
       index: "02",
-      title: "Talent Acquisition",
-      category: "TALENT ACQUISITION",
+      title: "Strategic Talent & GCC Hubs",
+      category: "TALENT ACQUISITION & GCC",
       summary:
-        "Practitioner-vetted engineering recruitment, contract staffing, and turnkey India & GCC development hub setup. Our technical recruiters deliver rigorous shortlists within 5 to 7 business days.",
+        "Practitioner-vetted engineering recruitment, dedicated squads, contract-to-hire staffing, and turnkey India Global Capability Center (GCC) establishment. Senior engineering leads conduct live code evaluations, delivering calibrated shortlists in 5 to 7 business days.",
       link: { label: "Explore Talent Solutions", href: "/hiring-consultation.html" },
       tags: [
         { label: "Permanent Hiring", href: "/permanent-it-recruitment.html" },
         { label: "Contract Staffing", href: "/contract-staffing.html" },
-        { label: "Dedicated Teams", href: "/staff-augmentation.html" },
-        { label: "GCC Setup", href: "/gcc-hiring.html" },
+        { label: "Dedicated Squads", href: "/staff-augmentation.html" },
+        { label: "GCC & India Setup", href: "/gcc-hiring.html" },
+        { label: "Executive Search", href: "/executive-search.html" },
+        { label: "16 Tech Roles", href: "/technologies-roles-we-recruit.html" },
       ],
       imageSrc: "/assets/img/subpage-talent-gcc.jpg",
-      badgeLabel: "02 // TALENT ACQUISITION",
+      badgeLabel: "02 // TALENT & GLOBAL HUBS",
       leaderLines: [
-        "TECHNICAL HIRING",
-        "CONTRACT STAFFING",
+        "SENIOR CODE ASSESSMENTS",
+        "5–7 DAY SHORTLISTS",
         "DEDICATED SQUADS",
-        "GCC & INDIA SETUP",
+        "TURNKEY GCC ESTABLISHMENT",
       ],
       outcomesTitle: "TALENT OUTCOMES",
-      outcomes: ["5–7 Day first shortlist", "88% Join ratio", "Code-screened candidates"],
+      outcomes: ["5–7 Day First Shortlist", "88% Offer-to-Join Ratio", "Code-Screened Candidates"],
     },
     {
       id: "corporate-learning",
       index: "03",
-      title: "Corporate Learning",
-      category: "CORPORATE LEARNING",
+      title: "Corporate Learning & Academies",
+      category: "WORKFORCE ENABLEMENT",
       summary:
-        "Hands-on corporate AI and cloud upskilling, NEP 2020 credit-aligned university tracks, and faculty development. We design intensive curricula with roughly 70% live lab time.",
+        "Hands-on corporate AI and cloud upskilling, NEP 2020 credit-aligned university tracks, and faculty development programs. We design intensive, sandbox-based curricula with roughly 70% live lab immersion.",
       link: { label: "Explore Corporate Learning", href: "/corporate-training.html" },
       tags: [
-        { label: "Enterprise Upskilling", href: "/corporate-training.html" },
-        { label: "Live Labs", href: "/corporate-training.html#labs" },
-        { label: "Certification Tracks", href: "/corporate-training.html#tracks" },
+        { label: "Enterprise AI Upskilling", href: "/generative-ai-training.html" },
+        { label: "AI Literacy for Teams", href: "/ai-literacy-training.html" },
+        { label: "Cloud & Kubernetes Labs", href: "/cloud-training.html" },
+        { label: "NEP Credit Courses", href: "/nep-credit-courses.html" },
         { label: "Faculty Development", href: "/faculty-development-programs.html" },
       ],
       imageSrc: "/assets/img/subpage-corporate-training.jpg",
-      badgeLabel: "03 // CORPORATE LEARNING",
+      badgeLabel: "03 // WORKFORCE ENABLEMENT",
       leaderLines: [
         "ENTERPRISE UPSKILLING",
-        "LIVE, LAB-BASED LEARNING",
-        "UNIVERSITY PROGRAMMES",
+        "~70% LIVE LAB IMMERSION",
+        "UNIVERSITY ACADEMIES",
         "FACULTY DEVELOPMENT",
       ],
       outcomesTitle: "LEARNING OUTCOMES",
-      outcomes: ["~70% Live lab time", "NEP 2020 credit aligned", "Production toolchains"],
+      outcomes: ["~70% Live Lab Immersion", "NEP 2020 Credit Aligned", "Production Toolchain Mastery"],
     },
   ];
 
   const current = practices[activeTab];
 
   return (
-    <section className="capabilities-enterprise-section" id="services" aria-label="Enterprise Capabilities">
+    <section className="capabilities-enterprise-section surface-ice-light" id="services" aria-label="Enterprise Capabilities" style={{ backgroundColor: "#F8FAFC", borderTop: "1px solid #E2E8F0" }}>
       <div className="capabilities-main-container">
         {/* SECTION HEADER */}
         <div className="capabilities-header">
           <div className="capabilities-eyebrow">
-            <span className="capabilities-eyebrow-bullet" />
-            <span>• ENTERPRISE CAPABILITIES</span>
+            <span className="capabilities-eyebrow-bullet" style={{ backgroundColor: "#007CC3" }} />
+            <span style={{ color: "#007CC3", fontWeight: 700 }}>• ENTERPRISE CAPABILITIES</span>
           </div>
 
-          <h2 className="capabilities-display-title">
-            Capabilities built around<br />
-            real business needs.
+          <h2 className="capabilities-display-title" style={{ color: "#0F172A" }}>
+            Capabilities engineered for<br />
+            enterprise velocity and scale.
           </h2>
 
-          <p className="capabilities-lede">
-            Three dedicated practices designed to support organisations at every phase of technical maturity. Begin with an isolated challenge or orchestrate all three together under one delivery lead.
+          <p className="capabilities-lede" style={{ color: "#475569" }}>
+            Three dedicated practices designed to support organisations at every phase of technical maturity. Begin with an isolated challenge or orchestrate all three together under one unified global delivery lead.
           </p>
         </div>
 
@@ -123,7 +128,7 @@ export function CapabilitiesServices() {
         <div className="capabilities-grid-layout">
           {/* LEFT COLUMN: 3 INTERACTIVE PRACTICE CARDS WITH VERTICAL TIMELINE */}
           <div className="capabilities-left-col">
-            <div className="capabilities-timeline-spine" aria-hidden="true" />
+            <div className="capabilities-timeline-spine" aria-hidden="true" style={{ backgroundColor: "rgba(0, 124, 195, 0.2)" }} />
 
             <div className="capabilities-cards-stack">
               {practices.map((practice, index) => {
@@ -151,37 +156,43 @@ export function CapabilitiesServices() {
                         setShowIntegrated(false);
                       }
                     }}
+                    style={{
+                      backgroundColor: isActive ? "#FFFFFF" : "rgba(255, 255, 255, 0.7)",
+                      borderColor: isActive ? "#007CC3" : "#E2E8F0",
+                      boxShadow: isActive ? "0 12px 32px rgba(0, 124, 195, 0.1)" : "none",
+                    }}
                   >
                     {/* Timeline Node & Number */}
                     <div className="capability-col-num">
-                      <div className={`capability-timeline-indicator ${isActive ? "has-halo" : ""}`}>
-                        <span className="indicator-core-dot" />
+                      <div className={`capability-timeline-indicator ${isActive ? "has-halo" : ""}`} style={{ backgroundColor: isActive ? "#007CC3" : "#94A3B8" }}>
+                        <span className="indicator-core-dot" style={{ backgroundColor: "#FFFFFF" }} />
                       </div>
                       <div className="capability-num-stack">
-                        <span className="capability-num-digits">{practice.index}</span>
+                        <span className="capability-num-digits" style={{ color: isActive ? "#007CC3" : "#64748B" }}>{practice.index}</span>
                         <span className="capability-meta-label">PRACTICE</span>
-                        <span className="capability-meta-cat">{practice.category}</span>
+                        <span className="capability-meta-cat" style={{ color: isActive ? "#007CC3" : "#64748B" }}>{practice.category}</span>
                       </div>
                     </div>
 
                     {/* Card Container */}
                     <div className="capability-card-body">
                       <div className="capability-card-top">
-                        <h3 className="capability-card-title">{practice.title}</h3>
+                        <h3 className="capability-card-title" style={{ color: "#0F172A" }}>{practice.title}</h3>
                         <a
                           href={practice.link.href}
                           className="capability-arrow-btn"
                           aria-label={`Learn more about ${practice.title}`}
+                          style={{ backgroundColor: isActive ? "#007CC3" : "transparent", color: isActive ? "#FFFFFF" : "#007CC3" }}
                         >
                           <span aria-hidden="true">→</span>
                         </a>
                       </div>
 
-                      <p className="capability-card-summary">{practice.summary}</p>
+                      <p className="capability-card-summary" style={{ color: "#475569" }}>{practice.summary}</p>
 
                       <div className="capability-tags-row">
                         {practice.tags.map((t) => (
-                          <a key={t.label} href={t.href} className="capability-tag-pill">
+                          <a key={t.label} href={t.href} className="capability-tag-pill" style={{ borderColor: "#CBD5E1", color: "#007CC3", backgroundColor: "rgba(0, 124, 195, 0.05)" }}>
                             {t.label}
                           </a>
                         ))}
@@ -202,6 +213,11 @@ export function CapabilitiesServices() {
                   type="button"
                   className={`stage-view-btn ${!showIntegrated ? "active" : ""}`}
                   onClick={() => setShowIntegrated(false)}
+                  style={{
+                    backgroundColor: !showIntegrated ? "#007CC3" : "#FFFFFF",
+                    color: !showIntegrated ? "#FFFFFF" : "#0F172A",
+                    borderColor: !showIntegrated ? "#007CC3" : "#CBD5E1",
+                  }}
                 >
                   Focused 3D Upfront View
                 </button>
@@ -209,6 +225,11 @@ export function CapabilitiesServices() {
                   type="button"
                   className={`stage-view-btn ${showIntegrated ? "active" : ""}`}
                   onClick={() => setShowIntegrated(true)}
+                  style={{
+                    backgroundColor: showIntegrated ? "#007CC3" : "#FFFFFF",
+                    color: showIntegrated ? "#FFFFFF" : "#0F172A",
+                    borderColor: showIntegrated ? "#007CC3" : "#CBD5E1",
+                  }}
                 >
                   Integrated 3D Landscape
                 </button>
@@ -220,6 +241,7 @@ export function CapabilitiesServices() {
                   className="stage-upfront-card anim-upfront-fade"
                   id={`capability-stage-${current.id}`}
                   key={current.id}
+                  style={{ border: "1px solid #E2E8F0", borderRadius: 12, overflow: "hidden", backgroundColor: "#FFFFFF" }}
                 >
                   <div className="stage-image-container">
                     <img
@@ -232,19 +254,19 @@ export function CapabilitiesServices() {
                     />
 
                     {/* Central 3D Platform Floating Glass Badge */}
-                    <div className="stage-platform-badge">
-                      <span className="badge-pulse-dot" />
-                      <span>{current.badgeLabel}</span>
+                    <div className="stage-platform-badge" style={{ backgroundColor: "rgba(3, 16, 38, 0.85)", borderColor: "rgba(0, 163, 224, 0.3)" }}>
+                      <span className="badge-pulse-dot" style={{ backgroundColor: "#00A3E0" }} />
+                      <span style={{ color: "#FFFFFF" }}>{current.badgeLabel}</span>
                     </div>
 
                     {/* Top Right Business Outcomes Card */}
-                    <div className="stage-outcomes-card">
-                      <span className="outcomes-top-tag">INTEGRATED DELIVERY</span>
-                      <h4 className="outcomes-title">{current.outcomesTitle}</h4>
-                      <ul className="outcomes-list">
+                    <div className="stage-outcomes-card" style={{ backgroundColor: "rgba(255, 255, 255, 0.95)", border: "1px solid #E2E8F0" }}>
+                      <span className="outcomes-top-tag" style={{ color: "#007CC3" }}>INTEGRATED DELIVERY</span>
+                      <h4 className="outcomes-title" style={{ color: "#0F172A" }}>{current.outcomesTitle}</h4>
+                      <ul className="outcomes-list" style={{ color: "#334155" }}>
                         {current.outcomes.map((item, idx) => (
                           <li key={idx}>
-                            <span className="outcome-bullet">•</span>
+                            <span className="outcome-bullet" style={{ color: "#007CC3" }}>•</span>
                             <span>{item}</span>
                           </li>
                         ))}
@@ -255,9 +277,9 @@ export function CapabilitiesServices() {
                     <div className="stage-leader-overlay">
                       {current.leaderLines.map((line, idx) => (
                         <div key={idx} className="leader-callout-row">
-                          <span className="leader-dot" />
-                          <span className="leader-line" />
-                          <span className="leader-text">{line}</span>
+                          <span className="leader-dot" style={{ backgroundColor: "#00A3E0" }} />
+                          <span className="leader-line" style={{ backgroundColor: "rgba(0, 163, 224, 0.4)" }} />
+                          <span className="leader-text" style={{ backgroundColor: "rgba(3, 16, 38, 0.85)", color: "#FFFFFF" }}>{line}</span>
                         </div>
                       ))}
                     </div>
@@ -265,7 +287,7 @@ export function CapabilitiesServices() {
                 </div>
               ) : (
                 /* View 2: Complete Interconnected 3D Landscape Model */
-                <div className="stage-integrated-card anim-upfront-fade">
+                <div className="stage-integrated-card anim-upfront-fade" style={{ border: "1px solid #E2E8F0", borderRadius: 12, overflow: "hidden", backgroundColor: "#FFFFFF" }}>
                   <div className="stage-image-container">
                     <img
                       src="/assets/img/capabilities-3d-stage.png"
@@ -275,9 +297,9 @@ export function CapabilitiesServices() {
                       height={465}
                       loading="eager"
                     />
-                    <div className="stage-platform-badge">
-                      <span className="badge-pulse-dot" />
-                      <span>INTEGRATED CAPABILITIES LANDSCAPE</span>
+                    <div className="stage-platform-badge" style={{ backgroundColor: "rgba(3, 16, 38, 0.85)", borderColor: "rgba(0, 163, 224, 0.3)" }}>
+                      <span className="badge-pulse-dot" style={{ backgroundColor: "#00A3E0" }} />
+                      <span style={{ color: "#FFFFFF" }}>INTEGRATED CAPABILITIES LANDSCAPE</span>
                     </div>
                   </div>
                 </div>
@@ -288,22 +310,22 @@ export function CapabilitiesServices() {
       </div>
 
       {/* BOTTOM DARK BANNER: "PARTNER FOR WHAT'S NEXT" */}
-      <div className="capabilities-bottom-banner">
+      <div className="capabilities-bottom-banner" style={{ backgroundColor: "#031026", color: "#FFFFFF", borderTop: "1px solid rgba(255, 255, 255, 0.1)" }}>
         <div className="banner-inner-container">
           <div className="banner-left">
-            <span className="banner-tag">PARTNER FOR WHAT'S NEXT</span>
-            <h3 className="banner-headline">Turn capability into measurable progress.</h3>
+            <span className="banner-tag" style={{ color: "#00A3E0" }}>PARTNER FOR WHAT'S NEXT</span>
+            <h3 className="banner-headline" style={{ color: "#FFFFFF" }}>Navigate your next transformation with proven engineering.</h3>
           </div>
 
           <div className="banner-center">
-            <p className="banner-desc">
-              Discuss your priorities with our team and explore how our three practices can work together to accelerate your goals.
+            <p className="banner-desc" style={{ color: "#CBD5E1" }}>
+              Discuss your engineering, talent, or learning roadmaps with our leadership team. We structure measurable pilot sprints with zero lock-in.
             </p>
           </div>
 
           <div className="banner-right">
-            <a href="/contact" className="banner-cta-btn">
-              <span>Discuss Your Requirements</span>
+            <a href="/contact" className="banner-cta-btn" style={{ backgroundColor: "#007CC3", borderColor: "#007CC3", color: "#FFFFFF" }}>
+              <span>Connect with Us</span>
               <span aria-hidden="true">→</span>
             </a>
           </div>

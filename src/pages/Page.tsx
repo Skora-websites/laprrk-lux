@@ -604,7 +604,7 @@ export function Page({ data }: { data: PageData }) {
   const heroBgImage = getSubpageHeroImage(data.slug, data.crumb);
 
   return (
-    <div style={{ backgroundColor: "#F4F1EB", minHeight: "100vh", color: "#202D3A" }}>
+    <div style={{ backgroundColor: "#FFFFFF", minHeight: "100vh", color: "#0F172A" }}>
       {/* 1. Header (Dynamic active state based on current page URL) */}
       <EditorialHeader activePath={data.slug} />
 

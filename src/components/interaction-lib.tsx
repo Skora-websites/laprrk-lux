@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from "react";
+import { useEffect, useRef, useState, type ReactNode, type CSSProperties } from "react";
 import gsap from "gsap";
 
 /* ---------- HoverFollow: port of the reference site's `.hover-reveal-item`.
@@ -227,10 +227,12 @@ export function Marquee({
   children,
   gap = 34,
   className = "",
+  style,
 }: {
   children: ReactNode;
   gap?: number;
   className?: string;
+  style?: CSSProperties;
 }) {
   const group = (
     <div className="marquee-group" style={{ gap, paddingRight: gap }}>
@@ -239,7 +241,7 @@ export function Marquee({
   );
 
   return (
-    <div className={`marquee ${className}`} aria-hidden="true">
+    <div className={`marquee ${className}`} style={style} aria-hidden="true">
       <div className="marquee-track">
         {group}
         {group}
